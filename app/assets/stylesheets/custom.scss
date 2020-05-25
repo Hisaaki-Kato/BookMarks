@@ -3,6 +3,7 @@
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;
+$gray-lighter: #bebebe;
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -40,10 +41,23 @@ aside {
 }
 
 
+/* Users index */
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-lighter;
+  }
+}
+
+
 /* forms */
 
 input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
+  border: 1px solid $gray-lighter;
   width: 100%;
   margin-bottom: 15px;
   @include box_sizing;
