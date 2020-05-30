@@ -11,6 +11,11 @@ $gray-lighter: #bebebe;
   box-sizing:         border-box;
 }
 
+/* header */
+header {
+  background-color: $gray-lighter;
+}  
+
 
 /* sidebar */
 
@@ -95,3 +100,4 @@ input {
   margin-top: 45px;
   @include box_sizing;
 }
+
