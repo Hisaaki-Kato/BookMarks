@@ -16,6 +16,7 @@ class UsersController < ApplicationController
       @feed_items = current_user.feed
       @boards = @user.boards
       @board = current_user.boards.build
+      @like_microposts = @user.like_microposts
     end
   end
 

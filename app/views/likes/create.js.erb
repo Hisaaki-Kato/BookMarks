@@ -1,0 +1,2 @@
+$("#like_form_<%= @micropost.id %>").html("<%= j(render partial: 'microposts/unliked', locals: { micropost: @micropost }) %>");
+$("#likes_<%= @micropost.id %>").html('<%= @micropost.likes.count %>');
