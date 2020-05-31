@@ -18,6 +18,14 @@ User.create!(name:  "Test User",
   admin: false,
   profile: "Hello, World!")
 
+User.create!(name:  "Test2 User",
+  email: "test@example.com",
+  password:              "hogehoge",
+  password_confirmation: "hogehoge",
+  admin: false,
+  profile: "I am test user.")
+
+#micropost
 users = User.order(:created_at).take(3)
 50.times do
   content_post = 'testpost'
@@ -25,3 +33,15 @@ users = User.order(:created_at).take(3)
   content_board = 'testboard'
   users.each { |user| user.boards.create!(content: content_board) }
 end
+
+#relationship
+users = User.all
+users[0].follow(users[1])
+users[0].follow(users[2])
+users[1].follow(users[0])
+
+# user  = users.first
+# following = users[1,2]
+# followers = users[2]
+# following.each { |followed| user.follow(followed) }
+# followers.each { |follower| follower.follow(user) }

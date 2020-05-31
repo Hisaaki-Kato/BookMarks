@@ -7,15 +7,17 @@
     <p>メモの数 (<%= @user.microposts.count %>)</p>
     <p>ボードの数 (<%= @user.boards.count %>)</p>
     <p>いいねの数</p>
-    <p>フォロー</p>
-    <p>フォロワー</p>
+    <section class="follow_stats">
+      <%= render 'shared/follow_stats' %>
+    </section>
   </section>
 </div>
 <div class="row">
-  <li class="col-md-3"><a href="#profile">プロフィール</a></li>
-  <li class="col-md-3"><a href="#books">読んだ本</a></li>
-  <li class="col-md-3"><a href="#memos">メモ</a></li>
-  <li class="col-md-3"><a href="#boards">ボード</a></li>
+  <ul class="col-md-2"><a href="#profile">プロフィール</a></ul>
+  <ul class="col-md-2"><a href="#books">読んだ本</a></ul>
+  <ul class="col-md-2"><a href="#memos">メモ</a></ul>
+  <ul class="col-md-2"><a href="#boards">ボード</a></ul>
+  <ul class="col-md-2"><a href="#timeline">タイムライン</a></ul>
 </div>
 
 <div id="profile">
@@ -60,4 +62,9 @@
       </ol>
     <% end %>
   </div>
+</div>
+
+<div id="timeline">
+  <h3>Micropost Feed</h3>
+  <%= render 'shared/feed' %>
 </div>
