@@ -20,6 +20,8 @@ User.create!(name:  "Test User",
 
 users = User.order(:created_at).take(3)
 50.times do
-  content = 'testtest'
-  users.each { |user| user.microposts.create!(content: content) }
+  content_post = 'testpost'
+  users.each { |user| user.microposts.create!(content: content_post) }
+  content_board = 'testboard'
+  users.each { |user| user.boards.create!(content: content_board) }
 end

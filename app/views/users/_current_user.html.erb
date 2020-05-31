@@ -4,7 +4,8 @@
     <h1>
       <%= @user.name %>
     </h1>
-    <p>メモの数</p>
+    <p>メモの数 (<%= @user.microposts.count %>)</p>
+    <p>ボードの数 (<%= @user.boards.count %>)</p>
     <p>いいねの数</p>
     <p>フォロー</p>
     <p>フォロワー</p>
@@ -48,5 +49,17 @@
 </div>
 
 <div id="boards">
-  <p>ボード</p>
+  <section class="board_form">
+    <%= render 'shared/board_form' %>
+  </section>
+
+  <div class="col-md-12">
+    <% if @user.boards.any? %>
+      <h3>Boards (<%= @user.boards.count %>)</h3>
+      <ol class="boards">
+        <%= render @boards %>
+      </ol>
+      <%= will_paginate @boards %>
+    <% end %>
+  </div>
 </div>

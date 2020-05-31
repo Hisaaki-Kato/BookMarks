@@ -12,6 +12,8 @@ class UsersController < ApplicationController
     @microposts = @user.microposts.paginate(page: params[:page])
     if logged_in?
       @micropost = current_user.microposts.build
+      @boards = current_user.boards.paginate(page: params[:page], per_page: 5)
+      @board = current_user.boards.build
     end
   end
 
