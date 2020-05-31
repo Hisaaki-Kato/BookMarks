@@ -15,7 +15,8 @@ User.create!(name:  "Test User",
   email: "test@railstutorial.org",
   password:              "testtest",
   password_confirmation: "testtest",
-  admin: false)
+  admin: false,
+  profile: "Hello, World!")
 
 users = User.order(:created_at).take(3)
 50.times do

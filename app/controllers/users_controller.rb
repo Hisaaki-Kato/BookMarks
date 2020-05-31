@@ -10,7 +10,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page])
-    @micropost = current_user.microposts.build
+    if logged_in?
+      @micropost = current_user.microposts.build
+    end
   end
 
   def new
@@ -51,8 +53,8 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
+      params.require(:user).permit(:name, :email, :profile,
+                                   :password, :password_confirmation)
     end
 
     def correct_user

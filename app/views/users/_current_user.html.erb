@@ -11,22 +11,42 @@
   </section>
 </div>
 <div class="row">
-  <li class="col-md-3"><a href="#">プロフィール</a></li>
-  <li class="col-md-3"><a href="#">読んだ本</a></li>
-  <li class="col-md-3"><a href="#">メモ</a></li>
-  <li class="col-md-3"><a href="#">ボード</a></li>
+  <li class="col-md-3"><a href="#profile">プロフィール</a></li>
+  <li class="col-md-3"><a href="#books">読んだ本</a></li>
+  <li class="col-md-3"><a href="#memos">メモ</a></li>
+  <li class="col-md-3"><a href="#boards">ボード</a></li>
 </div>
 
-<section class="micropost_form">
-  <%= render 'shared/micropost_form' %>
-</section>
-
-<div class="col-md-12">
-  <% if @user.microposts.any? %>
-    <h3>Microposts (<%= @user.microposts.count %>)</h3>
-    <ol class="microposts">
-      <%= render @microposts %>
-    </ol>
-    <%= will_paginate @microposts %>
+<div id="profile">
+  <h3>自己紹介文</h3>
+  <% if not @user.profile.blank? %>
+    <%= @user.profile %>
+  <% else %>
+    <p>自己紹介文は登録されていません。</p>
   <% end %>
+  <%= link_to "自己紹介文を変更する", edit_user_path %>
+</div>
+
+<div id="books">
+  <p>読んだ本</p>
+</div>
+
+<div id="memos">
+  <section class="micropost_form">
+    <%= render 'shared/micropost_form' %>
+  </section>
+
+  <div class="col-md-12">
+    <% if @user.microposts.any? %>
+      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+      <%= will_paginate @microposts %>
+    <% end %>
+  </div>
+</div>
+
+<div id="boards">
+  <p>ボード</p>
 </div>
