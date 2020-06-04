@@ -34,6 +34,17 @@ users = User.order(:created_at).take(3)
   users.each { |user| user.boards.create!(content: content_board) }
 end
 
+#comment
+users = User.order(:created_at).take(3)
+posts = Micropost.order(:created_at).take(10)
+3.times do
+  content_comment = 'testcomment'
+  users.each {
+    |user| user.comments.create!(micropost_id: 1,
+                                content: content_comment) 
+  }
+end
+
 #relationship
 users = User.all
 users[0].follow(users[1])

@@ -1,0 +1,15 @@
+<li id="comment-<%= comment.id %>">
+  <span class="user"><%= link_to comment.user.name, comment.user %></span>
+  <span class="content"><%= comment.content %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(comment.created_at) %> ago.
+  </span>
+  <% if logged_in? %>
+    <% if current_user?(comment.user) %>
+      <%= link_to "delete", 
+                  micropost_comments_path(@micropost.id),
+                  method: :delete,
+                  data: { confirm: "You sure?" } %>
+    <% end %>
+  <% end %>
+</li>

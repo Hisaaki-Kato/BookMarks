@@ -5,6 +5,14 @@ class MicropostsController < ApplicationController
   def index
     @microposts = Micropost.paginate(page: params[:page])
   end
+  
+  def show
+    @micropost = Micropost.find(params[:id])
+    @comments = @micropost.comments.includes(:user)
+    if logged_in?
+      @comment = @micropost.comments.build
+    end
+  end
 
   def create
     @user = current_user
