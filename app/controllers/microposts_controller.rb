@@ -3,7 +3,7 @@ class MicropostsController < ApplicationController
   before_action :correct_user,   only: :destroy
 
   def index
-    @microposts = Micropost.paginate(page: params[:page])
+    @microposts = Micropost.includes(:user).paginate(page: params[:page])
   end
   
   def show

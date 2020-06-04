@@ -10,13 +10,13 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @microposts = @user.microposts
+    @microposts = @user.microposts.includes(:user)
     if logged_in?
       @micropost = current_user.microposts.build
       @feed_items = current_user.feed
-      @boards = @user.boards
+      @boards = @user.boards.includes(:user)
       @board = current_user.boards.build
-      @like_microposts = @user.like_microposts
+      @like_microposts = @user.like_microposts.includes(user: :like)
     end
   end
 
