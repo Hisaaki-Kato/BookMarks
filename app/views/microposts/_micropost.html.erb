@@ -6,6 +6,8 @@
     Posted <%= time_ago_in_words(micropost.created_at) %> ago.
   </span>
   <p>
+    <span><%= link_to "コメント数: ", micropost %></span>
+    <span id="likes_<%= micropost.id %>"><%= micropost.comments.count %></span>
     <span>いいね数: </span>
     <span id="likes_<%= micropost.id %>"><%= micropost.likes.count %></span>
   </p>

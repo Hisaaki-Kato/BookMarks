@@ -1,0 +1,28 @@
+<% provide(:title, '学びメモ詳細') %>
+<h1><%= link_to @micropost.user.name, @micropost.user %></h1>
+<div>
+  <span><%= @micropost.content %></span>
+  <span>コメント数: </span>
+  <span id="comments_<%= @micropost.id %>"><%= @micropost.comments.count %></span>
+  <span>いいね数: </span>
+  <span id="likes_<%= @micropost.id %>"><%= @micropost.likes.count %></span>
+</div>
+<div class="row">
+  <div class="col-md-8">
+    <p>コメント一覧</p>
+    <% if logged_in? %>
+      <%= render "comments/comment_form" %>
+    <% end %>
+    <ul class="comments">
+      <%= render @comments %>
+    </ul>
+  </div>
+  <div class="col-md-4">
+    <p>いいねしているユーザー</p>
+    <ul class="likes">
+      <% @micropost.likes.each do |like| %>
+        <li><%= link_to like.user.name, like.user %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
