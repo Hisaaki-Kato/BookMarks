@@ -1,6 +1,13 @@
 <%= form_for(@micropost) do |f| %>
   <div class="field">
-    <%= f.text_area :content, placeholder: "Compose new micropost..." %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :book_id, value: @book.id %>
+
+    <%= f.label :quoted_text, "引用文" %>
+    <%= f.text_field :quoted_text %>
+
+    <%= f.label :content, "学びメモ" %>
+    <%= f.text_field :content %>
   </div>
   <%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>

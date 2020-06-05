@@ -1,0 +1,1 @@
+$("#read_form_<%= @book.id %>").html("<%= j(render partial: 'books/unread', locals: { read: @read }) %>");

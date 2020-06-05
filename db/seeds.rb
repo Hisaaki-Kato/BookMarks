@@ -25,23 +25,33 @@ User.create!(name:  "Test2 User",
   admin: false,
   profile: "I am test user.")
 
+#book
+Book.create!(title: "test-book",
+  image: "no-image")
+Book.create!(title: "hogehoge-book",
+  image: "no-image")
+
 #micropost
 users = User.order(:created_at).take(3)
-50.times do
+10.times do
+  quoted_text = 'test-quoted_text'
   content_post = 'testpost'
-  users.each { |user| user.microposts.create!(content: content_post) }
+  users.each { |user| user.microposts.create!(quoted_text: quoted_text,
+                                              content: content_post,
+                                              book_id: 1) }
   content_board = 'testboard'
-  users.each { |user| user.boards.create!(content: content_board) }
+  users.each { |user| user.boards.create!(content: content_board,
+                                          book_id: 2) }
 end
 
 #comment
 users = User.order(:created_at).take(3)
 posts = Micropost.order(:created_at).take(10)
-3.times do
+1.times do
   content_comment = 'testcomment'
   users.each {
     |user| user.comments.create!(micropost_id: 1,
-                                content: content_comment) 
+                                 content: content_comment) 
   }
 end
 
