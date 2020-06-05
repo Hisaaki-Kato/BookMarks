@@ -13,6 +13,7 @@ gem 'will_paginate',           '3.1.7'
 gem 'bootstrap-will_paginate', '1.0.0'
 gem 'json'
 gem 'httparty'
+gem "websocket-extensions", ">= 0.1.5"
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
