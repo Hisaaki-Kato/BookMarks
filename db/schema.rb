@@ -10,15 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_04_065033) do
+ActiveRecord::Schema.define(version: 2020_06_05_070732) do
 
   create_table "boards", force: :cascade do |t|
     t.text "content"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "book_id"
     t.index ["user_id", "created_at"], name: "index_boards_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_boards_on_user_id"
+  end
+
+  create_table "books", force: :cascade do |t|
+    t.string "title"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "comments", force: :cascade do |t|
@@ -27,6 +35,7 @@ ActiveRecord::Schema.define(version: 2020_06_04_065033) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["created_at"], name: "index_comments_on_created_at"
     t.index ["user_id", "micropost_id", "created_at"], name: "index_comments_on_user_id_and_micropost_id_and_created_at"
   end
 
@@ -45,8 +54,19 @@ ActiveRecord::Schema.define(version: 2020_06_04_065033) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "book_id"
+    t.text "quoted_text"
     t.index ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_microposts_on_user_id"
+  end
+
+  create_table "reads", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_reads_on_book_id"
+    t.index ["user_id"], name: "index_reads_on_user_id"
   end
 
   create_table "relationships", force: :cascade do |t|

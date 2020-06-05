@@ -1,0 +1,7 @@
+<div id="read_form_<%= book.id %>">
+  <% if book.read_by?(current_user) %> <!-- ログインしているユーザーが読んだかどうかで分岐 -->
+    <%= render 'books/unread', book: book %>
+  <% else %>
+    <%= render 'books/read', book: book %>
+  <% end %>
+</div>

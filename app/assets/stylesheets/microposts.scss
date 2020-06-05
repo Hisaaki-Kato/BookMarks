@@ -18,6 +18,11 @@ $gray-lighter: #bebebe;
     margin-top: 5em;
     padding-top: 0;
   }
+  .quoted_text {
+    display: block;
+    margin-left: 60px;
+    color: $gray-lighter;
+  }
   .content {
     display: block;
     margin-left: 60px;

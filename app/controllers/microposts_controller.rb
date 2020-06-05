@@ -16,13 +16,14 @@ class MicropostsController < ApplicationController
 
   def create
     @user = current_user
+    @book = Book.find(micropost_params[:book_id])
     @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save
       flash[:success] = "Micropost created!"
-      redirect_to @user
+      redirect_to @book
     else
       flash[:danger] = "正しい内容を入力してください"
-      redirect_to @user
+      redirect_to @book
     end
   end
 
@@ -35,7 +36,7 @@ class MicropostsController < ApplicationController
   private
 
     def micropost_params
-      params.require(:micropost).permit(:content)
+      params.require(:micropost).permit(:user_id, :book_id, :quoted_text, :content)
     end
 
     def correct_user

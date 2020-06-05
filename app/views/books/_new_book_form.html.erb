@@ -1,0 +1,11 @@
+<%= form_for(@book) do |f| %>
+  <%= render 'shared/error_messages', object: @book %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title, class: 'form-control' %>
+
+  <%= f.label :image %>
+  <%= f.text_field :image, class: 'form-control' %>
+
+  <%= f.submit '本棚に追加する', class: "btn btn-primary" %>
+<% end %>

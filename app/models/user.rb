@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :reads,      dependent: :destroy
+  has_many :read_books, through: :reads, source: :book
   has_many :microposts, dependent: :destroy
   has_many :comments,   dependent: :destroy
   has_many :boards,     dependent: :destroy
