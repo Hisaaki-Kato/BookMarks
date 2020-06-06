@@ -8,8 +8,14 @@
         </span>
     </div>
   <% end %>
-<% if @title.present? %>
-  <%= render "books/new_book_form" %>
-<% elsif @books.present? %>
+
+<% if @books.present? %>
+  <%# 検索結果 %>
   <%= render "books/result", books: @books %>
+<% elsif @keyword.present? %>
+  <%# 検索結果が存在しない場合 %>
+  <%= render "books/no_result", title: @keyword %>
+<% elsif @title.present? %>
+  <%# 検索した本を選択した場合 %>
+  <%= render "books/new_book_form" %>
 <% end %>
