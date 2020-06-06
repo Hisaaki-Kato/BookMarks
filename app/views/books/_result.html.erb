@@ -1,0 +1,14 @@
+<h2>検索結果</h2>
+<% books.each do |book| %>
+  <%= link_to new_book_path(title: book[0], image: book[2]) do %> <%##-> 1に変える %>
+    <table class="jumbotron">
+      <tr>
+        <td rowspan='2'><img src="<%= book[1] %>" width="40" vspace="2"></td>
+        <td><%= book[0] %></td>
+      </tr>
+      <tr>
+        <td><%= book[2] %></td>
+      </tr>
+    </table>
+  <% end %>
+<% end %>
