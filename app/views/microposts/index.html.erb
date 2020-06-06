@@ -3,8 +3,8 @@
   <aside class="col-md-4">
     <section class="user_info">
       <h1>人気の書籍</h1>
-      <p>書籍情報</p>
-      <p><%= link_to "本一覧", books_path %></p>
+      <%= render @popular_books %>
+      <p><%= link_to "他の本を見てみる >>", books_path %></p>
     </section>
   </aside>
 
