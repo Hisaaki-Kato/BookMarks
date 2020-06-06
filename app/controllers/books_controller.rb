@@ -33,7 +33,7 @@ class BooksController < ApplicationController
       @image = params[:image]
       if @image.nil?
         #画像はない場合があるため、置き換え
-        @image = "no-image" ##->代用画像に置き換える
+        @image = "no-image.png"
       end
 
       @book = Book.find_by(title: params[:title], image: @image)

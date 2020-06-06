@@ -27,9 +27,9 @@ User.create!(name:  "Test2 User",
 
 #book
 Book.create!(title: "test-book",
-  image: "no-image")
+  image: "/no-image.png")
 Book.create!(title: "hogehoge-book",
-  image: "no-image")
+  image: "/no-image.png")
 
 #micropost
 users = User.order(:created_at).take(3)

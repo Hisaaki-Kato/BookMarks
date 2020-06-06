@@ -1,5 +1,9 @@
 <li id="micropost-<%= micropost.id %>">
-  <span><%= link_to micropost.book.image, micropost.book %></span>
+  <span>
+    <%= link_to micropost.book do %>
+      <p><img class="book-img in-microposts" src="<%= micropost.book.image %>"></p>
+    <% end %>
+  </span>
   <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
   <span class="quoted_text"><%= micropost.quoted_text %></span>
   <span class="content"><%= micropost.content %></span>
