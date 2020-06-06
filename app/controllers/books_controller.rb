@@ -1,6 +1,11 @@
 class BooksController < ApplicationController
   include GoogleBooksApi #app/lib
 
+  require 'net/http'
+  require 'uri'
+  require 'json'
+  require 'httparty'
+
   before_action :logged_in_user, only: [:new, :create, :destroy]
   # before_action :admin_user,     only: :destroy  ##メソッドを定義する必要あり
 
@@ -21,15 +26,15 @@ class BooksController < ApplicationController
     if params[:title].blank?    
       #本を選択前の処理
       if params[:keyword].present?
-        require 'net/http'
-        require 'uri'
-        require 'json'
-        require 'httparty'
         @books = GoogleBooksApi.get_results(params[:keyword])
+        if @books.nil?
+          #検索結果がない場合
+          @keyword = params[:keyword]
+          @book = Book.new
+        end
       end
     else
       #本を選択後の処理
-
       @image = params[:image]
       if @image.nil?
         #画像はない場合があるため、置き換え
