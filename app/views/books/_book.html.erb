@@ -1,11 +1,11 @@
-<li>
-  <%= link_to book.title, book %>
+<%= link_to book do %>
+  <p><%= book.title %></p>
   <p><img class="book-img" src="<%= book.image %>"></p>
-  <% if logged_in? %>
-    <%= render "books/read_form", book: book %>
-    <% if current_user.admin? %>
-      <%= link_to "delete", book, method: :delete,
-                                  data: { confirm: "You sure?" } %>
-    <% end %>
+<% end %>
+<% if logged_in? %>
+  <%= render "books/read_form", book: book %>
+  <% if current_user.admin? %>
+    <%= link_to "delete", book, method: :delete,
+                                data: { confirm: "You sure?" } %>
   <% end %>
-</li>
+<% end %>
