@@ -1,11 +1,16 @@
+<h2>選択した本</h2>
+<table class="jumbotron">
+  <tr>
+    <td><img src="<%= @image %>" width="40" vspace="2"></td>
+    <td><%= @image %></td>  <%##->画像を登録できるようにしたら消す%>
+    <td><%= @title %></>
+  </tr>
+</table>
+
 <%= form_for(@book) do |f| %>
   <%= render 'shared/error_messages', object: @book %>
-
-  <%= f.label :title %>
-  <%= f.text_field :title, class: 'form-control' %>
-
-  <%= f.label :image %>
-  <%= f.text_field :image, class: 'form-control' %>
+  <%= f.hidden_field :title, class: 'form-control', value: "#{@title}" %>
+  <%= f.hidden_field :image, class: 'form-control', value: "#{@image}" %>  <%#画像用のフィールドに変える%>
 
   <%= f.submit '本棚に追加する', class: "btn btn-primary" %>
 <% end %>
