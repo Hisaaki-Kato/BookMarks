@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       @read_book = current_user.read_books.build
       @feed_items = current_user.feed
       @boards = @user.boards.includes(:user)
-      @like_microposts = @user.like_microposts.includes(user: :like)
+      @like_microposts = @user.like_microposts.includes(user: :likes)
     end
   end
 

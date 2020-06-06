@@ -5,7 +5,7 @@
       <h1>
         <%= @book.title %>
       </h1>
-      <p><%= @book.image %></p>
+      <p><img class="book-img" src="<%= @book.image %>"></p>
       <% if logged_in? %>
         <%= render "books/read_form", book: @book %>
         <% if current_user.admin? %>
