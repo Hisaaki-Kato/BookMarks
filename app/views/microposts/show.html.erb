@@ -1,7 +1,13 @@
 <% provide(:title, '学びメモ詳細') %>
-<h1><%= link_to @micropost.user.name, @micropost.user %></h1>
+<div class="micropost">
+  <span class="name_picture">
+    <%= link_to @micropost.user do %>
+      <%= render "users/user_info", user: @micropost.user %>
+    <% end %>
+  </span>
+  <h3><%= @micropost.content %></h3>
+</div>
 <div>
-  <span><%= @micropost.content %></span>
   <span>コメント数: </span>
   <span id="comments_<%= @micropost.id %>"><%= @micropost.comments.count %></span>
   <span>いいね数: </span>
@@ -21,7 +27,11 @@
     <p>いいねしているユーザー</p>
     <ul class="likes">
       <% @micropost.likes.each do |like| %>
-        <li><%= link_to like.user.name, like.user %></li>
+        <li>
+          <%= link_to like.user do %> 
+            <%= render "users/user_info", user: like.user %>
+          <% end %>
+        </li>
       <% end %>
     </ul>
   </div>
