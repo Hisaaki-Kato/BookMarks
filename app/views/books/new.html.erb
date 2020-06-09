@@ -1,5 +1,5 @@
 <% provide(:title, '本棚に追加') %>
-<h1>書籍の新規登録</h1>
+<h1>書籍を探す</h1>
   <%= form_tag(new_book_path, method: :get) do %>
     <div class="input-group">
       <%= search_field_tag "keyword", params[:keyword], class: "form-control", placeholder: "キーワード検索" %>

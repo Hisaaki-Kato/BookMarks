@@ -7,11 +7,6 @@ class BooksController < ApplicationController
   require 'httparty'
 
   before_action :logged_in_user, only: [:new, :create, :destroy]
-  # before_action :admin_user,     only: :destroy  ##メソッドを定義する必要あり
-
-  def index
-    @books = Book.all.paginate(page: params[:page])
-  end
 
   def show
     @book = Book.find(params[:id])

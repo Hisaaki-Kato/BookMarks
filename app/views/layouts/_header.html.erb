@@ -1,9 +1,16 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
   <p><%= link_to "BookMarks", root_path %></p>
-  <form>
-    <input type="text" value='検索窓'>
-  </form>
+  <div class="header_form">
+  <%= form_tag(new_book_path, method: :get) do %>
+    <div class="input-group">
+      <%= search_field_tag "keyword", params[:keyword], class: "form-control", placeholder: "書籍を探す" %>
+        <span class="input-group-btn">
+          <%= submit_tag "検索", class: "btn btn-primary" %>
+        </span>
+    </div>
+  <% end %>
+  </div>
     <ul class="nav navbar-nav navbar-right">
       <li><%= link_to "BookMarksについて", '#' %></li>
       <li><%= link_to "Home",   '#' %></li>
