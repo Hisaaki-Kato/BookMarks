@@ -1,3 +1,29 @@
-// Place all the styles related to the Users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// micropost内
+.user_picture {
+  width: 50px;
+  margin: 5px;
+  border-radius: 50px;
+}
+
+// userページ
+.name_picture{
+  img {
+    width: 100px;
+  }
+  p {
+    font-size: 40px;
+    font-weight: bold;
+  }
+}
+
+// user_indexページ
+.users {
+  img {
+    width: 70px;
+  }
+  p {
+    font-size: 20px;
+    font-weight: bold;
+  }
+}

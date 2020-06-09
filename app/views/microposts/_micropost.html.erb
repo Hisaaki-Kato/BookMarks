@@ -9,7 +9,11 @@
     </span>
   <% end %>
   
-  <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
+  <span class="user">
+    <%= link_to micropost.user do %>
+      <%= render "users/user_info", user: micropost.user %>
+    <% end %>
+  </span>
   <span class="quoted_text"><%= micropost.quoted_text %></span>
   <span class="content"><%= micropost.content %></span>
   <span class="timestamp">

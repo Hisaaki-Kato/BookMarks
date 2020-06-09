@@ -2,9 +2,9 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
-      <h1>
-        <%= @user.name %>
-      </h1>
+      <section class="name_picture">
+        <%= render "users/user_info", user: @user %>
+      </section>
       <section class="follow_stats">
         <%= render 'shared/follow_stats' %>
       </section>

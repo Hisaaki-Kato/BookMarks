@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_05_070732) do
+ActiveRecord::Schema.define(version: 2020_06_09_031453) do
 
   create_table "boards", force: :cascade do |t|
     t.text "content"
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 2020_06_05_070732) do
     t.string "password_digest"
     t.boolean "admin", default: false
     t.text "profile"
+    t.string "picture"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

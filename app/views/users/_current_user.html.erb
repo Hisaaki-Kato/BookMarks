@@ -1,15 +1,11 @@
 <% provide(:title, "Mypage") %>
 <div class="container">
   <section class="user_info">
-    <h1>
-      <%= @user.name %>
-    </h1>
+    <section class="name_picture">
+      <%= render "users/user_info", user: @user %>
+    </section>
     <p>メモの数 (<%= @user.microposts.count %>)</p>
     <p>ボードの数 (<%= @user.boards.count %>)</p>
-    <p>いいねの数</p>
-    <section class="follow_stats">
-      <%= render 'shared/follow_stats' %>
-    </section>
   </section>
 </div>
 <div class="row">
@@ -22,13 +18,18 @@
 </div>
 
 <div id="profile">
-  <h3>自己紹介文</h3>
+  <h3>プロフィール</h3>
+  <%= link_to "プロフィールを変更する", edit_user_path %>
+  <h4>自己紹介文</h4>
   <% if not @user.profile.blank? %>
     <%= @user.profile %>
   <% else %>
     <p>自己紹介文は登録されていません。</p>
   <% end %>
-  <%= link_to "自己紹介文を変更する", edit_user_path %>
+  <h4>ユーザー名・プロフィール画像</h4>
+  <section class="name_picture">
+    <%= render "users/user_info", user: @user %>
+  </section>
 </div>
 
 <div id="books">
