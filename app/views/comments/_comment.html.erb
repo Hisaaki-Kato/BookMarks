@@ -7,7 +7,8 @@
   <% if logged_in? %>
     <% if current_user?(comment.user) %>
       <%= link_to "delete", 
-                  micropost_comments_path(@micropost.id),
+                  micropost_comments_path(micropost_id: @micropost.id,
+                                          comment_id: comment.id),
                   method: :delete,
                   data: { confirm: "You sure?" } %>
     <% end %>

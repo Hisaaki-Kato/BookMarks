@@ -15,8 +15,8 @@ class CommentsController < ApplicationController
 
   def destroy
     @micropost = Micropost.find(params[:micropost_id])
-    comment = Comment.find_by(micropost_id: params[:micropost_id], user_id: current_user.id)
-    comment.destroy
+    Comment.find(params[:comment_id]).destroy
+    flash[:success] = "コメントを削除しました。"
     redirect_to @micropost
   end
 
