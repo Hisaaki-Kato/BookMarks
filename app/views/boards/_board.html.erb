@@ -1,7 +1,9 @@
 <div class="jumbotron">
   <li id="board-<%= board.id %>">
-    <%# <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
-    <span class="user"><%= link_to board.user.name, board.user %></span>
+    <span class="book">
+      <%= render board.book %>
+    </span>
+    <span class="title"><%= board.title %></span>
     <span class="content"><%= board.content %></span>
     <span class="timestamp">
 

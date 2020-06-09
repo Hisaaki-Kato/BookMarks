@@ -12,9 +12,16 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     @microposts = @book.microposts.includes(:user)
     if logged_in?
+      #新規作成用
+      @board = current_user.boards.build
       @micropost = current_user.microposts.build
+
+      #ログイン時には、自他を分ける
+      @my_board = current_user.boards.find_by(book_id: @book.id)
+      @my_microposts = current_user.microposts.where(book_id: @book.id)
+
+      @other_microposts = @microposts.where.not(user_id: current_user.id)
     end
-    ##->boardとの関連付け##
   end
 
   def new
