@@ -3,7 +3,8 @@ class MicropostsController < ApplicationController
   before_action :correct_user,   only: :destroy
 
   def index
-    @microposts = Micropost.includes(:user).paginate(page: params[:page])
+    @microposts = Micropost.includes(:user).paginate(page: params[:page],
+                                                     per_page: 20)
     @popular_books = popular_books
   end
   
