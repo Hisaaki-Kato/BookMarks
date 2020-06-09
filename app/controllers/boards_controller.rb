@@ -2,15 +2,19 @@ class BoardsController < ApplicationController
   before_action :logged_in_user, only: [:create, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update, :destroy]
 
+  def new
+  end
+
   def create
     @user = current_user
+    @book = Book.find(micropost_params[:book_id])
     @board = current_user.boards.build(board_params)
     if @board.save
       flash[:success] = "board created!"
-      redirect_to @user
+      redirect_to @book
     else
       flash[:danger] = "正しい内容を入力してください"
-      redirect_to @user
+      redirect_to @book
     end
   end
 
@@ -38,7 +42,7 @@ class BoardsController < ApplicationController
   private
 
     def board_params
-      params.require(:board).permit(:content)
+      params.require(:board).permit(:content, :book_id)
     end
 
     def correct_user

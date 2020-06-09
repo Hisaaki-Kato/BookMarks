@@ -11,8 +11,10 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @microposts = @book.microposts.includes(:user)
+    @boards = current_user.boards.where(book_id: @book.id)
     if logged_in?
       @micropost = current_user.microposts.build
+      @board = current_user.boards.build
     end
     ##->boardとの関連付け##
   end

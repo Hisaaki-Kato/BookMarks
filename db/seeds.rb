@@ -29,7 +29,7 @@ User.create!(name:  "Test2 User",
 Book.create!(title: "test-book",
   image: "/no-image.png")
 Book.create!(title: "hogehoge-book",
-  image: "/no-image.png")
+  image: "/no-picture.png")
 
 #micropost
 users = User.order(:created_at).take(3)
@@ -41,7 +41,7 @@ users = User.order(:created_at).take(3)
                                               book_id: 1) }
   content_board = 'testboard'
   users.each { |user| user.boards.create!(content: content_board,
-                                          book_id: 2) }
+                                          book_id: 1) }
 end
 
 #comment

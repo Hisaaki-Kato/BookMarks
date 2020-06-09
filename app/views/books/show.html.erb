@@ -14,6 +14,18 @@
         <% end %>
       <% end %>
     </section>
+    <section>
+      <% if logged_in? %>
+        <p>dd</p>
+        <% if @book.boards.any? %>
+          <p>あるよ</p>
+          <%= @boards.count %>
+        <% else %>
+          <p>ないよ</p>
+        <% end %>
+        <%= link_to "新しいボードを追加する", new_board_path %>
+      <% end %>
+    </section>
   </aside>
   
   <%# micropost %>
