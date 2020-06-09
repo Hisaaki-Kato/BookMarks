@@ -1,5 +1,7 @@
 <%= form_for(@board) do |f| %>
   <div class="field">
+    <%= f.hidden_field :book_id, value: @book.id %>
+    <%= f.hidden_field :title, value: @book.title %>
     <%= f.text_area :content, placeholder: "Compose new board..." %>
   </div>
   <%= f.submit "Post", class: "btn btn-primary" %>

@@ -14,34 +14,13 @@
         <% end %>
       <% end %>
     </section>
-    <section>
-      <% if logged_in? %>
-        <p>dd</p>
-        <% if @book.boards.any? %>
-          <p>あるよ</p>
-          <%= @boards.count %>
-        <% else %>
-          <p>ないよ</p>
-        <% end %>
-        <%= link_to "新しいボードを追加する", new_board_path %>
-      <% end %>
-    </section>
   </aside>
-  
-  <%# micropost %>
+
   <div class="col-md-8">
     <% if logged_in? %>
-      <% if @book.read_by?(current_user) %>
-        <section class="micropost_form">
-          <%= render 'shared/micropost_form' %>
-        </section>
-      <% end %>
-    <% end %>
-    <% if @book.microposts.any? %>
-      <h3>Microposts (<%= @book.microposts.count %>)</h3>
-      <ol class="microposts">
-        <%= render @microposts %>
-      </ol>
+      <%= render "books/show_logged_in" %>
+    <% else %>
+      <%= render "books/show_not_logged_in" %>
     <% end %>
   </div>
 </div>

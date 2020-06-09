@@ -39,10 +39,16 @@ users = User.order(:created_at).take(3)
   users.each { |user| user.microposts.create!(quoted_text: quoted_text,
                                               content: content_post,
                                               book_id: 1) }
-  content_board = 'testboard'
-  users.each { |user| user.boards.create!(content: content_board,
-                                          book_id: 1) }
 end
+
+#board
+title = 'board-title'
+content_board = 'testboard'
+users.each { |user| 
+  user.boards.create!(title: title,content: content_board,
+                                   book_id: 1)
+  user.boards.create!(title: title,content: content_board + '2',
+                                   book_id: 2)}
 
 #comment
 users = User.order(:created_at).take(3)

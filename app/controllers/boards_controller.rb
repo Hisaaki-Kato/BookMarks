@@ -2,12 +2,8 @@ class BoardsController < ApplicationController
   before_action :logged_in_user, only: [:create, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update, :destroy]
 
-  def new
-  end
-
   def create
-    @user = current_user
-    @book = Book.find(micropost_params[:book_id])
+    @book = Book.find(board_params[:book_id])
     @board = current_user.boards.build(board_params)
     if @board.save
       flash[:success] = "board created!"
@@ -26,7 +22,7 @@ class BoardsController < ApplicationController
     @user = current_user
     @board = Board.find(params[:id])
     if @board.update_attributes(board_params)
-      flash[:success] = "Profile updated"
+      flash[:success] = "Myボードが更新されました。"
       redirect_to @user
     else
       render 'edit'
@@ -42,7 +38,7 @@ class BoardsController < ApplicationController
   private
 
     def board_params
-      params.require(:board).permit(:content, :book_id)
+      params.require(:board).permit(:title, :content, :book_id)
     end
 
     def correct_user

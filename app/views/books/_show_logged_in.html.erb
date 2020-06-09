@@ -1,0 +1,45 @@
+<div class="row">
+  <ul class="col-md-4"><a href="#book_board">My学びボード</a></ul>
+  <ul class="col-md-4"><a href="#book_memos">My学びメモ</a></ul>
+  <ul class="col-md-4"><a href="#book_other_memos">他の人のメモ</a></ul>
+</div>
+
+<%# board %>
+<div id="book_board">
+  <% if @my_board.blank? %>
+    <p>まだボードはありません。</p>
+    <%= render "shared/board_form" %>
+  <% else %>
+    <div class="board_text">
+      <%= @my_board.content %>
+      <%= link_to "編集する", edit_board_path(@my_board.id) %>
+    </div>
+  <% end %>
+</div>
+
+<%# micropost %>
+<div id="book_memos">
+  <section class="micropost_form">
+    <% if @book.read_by?(current_user) %>
+      <%= render 'shared/micropost_form' %>
+    <% end %>
+  </section>
+  <% if @my_microposts.any? %>
+    <ol class="microposts">
+      <%= render @my_microposts %>
+    </ol>
+  <% else %>
+    <p>あなたが投稿した学びメモはまだありません。</p>
+  <% end %>
+</div>
+
+<%# other_micropost %>
+<div id="book_other_memos">
+  <% if @other_microposts.any? %>
+    <ol class="microposts">
+      <%= render @other_microposts %>
+    </ol>
+  <% else %>
+    <p>他の人が投稿した学びメモはまだありません。</p>
+  <% end %>
+</div>
