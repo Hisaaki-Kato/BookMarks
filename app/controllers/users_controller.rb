@@ -10,7 +10,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @microposts = @user.microposts.includes(:user)
+    @microposts = @user.microposts.includes(:user).paginate(page: params[:page], 
+                                                            per_page: 20)
     if logged_in?
       @read_books = @user.read_books
       @read_book = current_user.read_books.build
