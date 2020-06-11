@@ -1,4 +1,4 @@
-<%=link_to "いいね解除", 
-            micropost_likes_path(micropost.id),
-            method: :delete, remote: true,
-            class: "btn btn-secondary" %>
+<%=link_to micropost_likes_path(micropost.id),
+           method: :delete, remote: true do %>
+  <span><img src="/liked.png">いいね済み</span>
+<% end %>

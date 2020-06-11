@@ -1,4 +1,4 @@
-<div id="like_form_<%= micropost.id %>">
+<div id="like_form_<%= micropost.id %>" class="like-form">
   <% unless micropost.user == current_user %>
     <% if micropost.liked_by?(current_user) %> <!-- ログインしているユーザーがいいねしたかどうかで分岐 -->
       <%= render 'microposts/unliked', micropost: micropost %>

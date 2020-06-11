@@ -1,14 +1,59 @@
-// Place all the styles related to the Books controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+$gray-medium-light: #faf9f9;
+$gray-lighter: #bebebe;
+$light-green: #ade597;
+$medium-green: rgb(44, 172, 71);
+
+.book {
+  margin: 20px;
+}
+
+.book-title {
+  margin: 0;
+}
 .book-img {
   width: 150px;
-  margin: 5px;
   #new_form {
     width: 300px;
   }
 }
 
 .in-microposts {
-  width: 60px;
+  width: 100px;
+}
+
+/* 人気の書籍 */
+.popular-books {
+  margin-right: 20px;
+  border: 20px;
+  padding: 10px;
+  background-color: $gray-medium-light;
+  h1 {
+    text-align: center;
+    padding-top: 10px;
+    border-bottom: 2px solid $medium-green;
+    #ranking-logo {
+      width: 30px;
+      margin-bottom: 5px;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
+  #search-other-books {
+    text-align: right;
+    margin-right: 20px;
+    a {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 0 3px 1px #007bff inset!important;
+      color: #007bff;
+      padding: 5px 10px;
+    }
+  }
+  .book {
+    padding-bottom: 10px;
+    border-bottom: 1px solid $gray-lighter;
+    p {
+      margin-bottom: 4px;
+    }
+  }
 }

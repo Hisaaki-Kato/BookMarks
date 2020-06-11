@@ -1,10 +1,10 @@
 <% provide(:title, 'HOME') %>
 <div class="row">
   <aside class="col-md-4">
-    <section class="user_info">
-      <h1>人気の書籍</h1>
+    <section class="popular-books">
+      <h1><img id="ranking-logo" src="/ranking.png">人気の書籍ランキング</h1>
       <%= render @popular_books %>
-      <p><%= link_to "他の本を探す >>", new_book_path %></p>
+      <p id="search-other-books"><%= link_to "他の本を探してみる>>", new_book_path %></p>
     </section>
   </aside>
 

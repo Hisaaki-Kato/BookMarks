@@ -1,5 +1,9 @@
 
 // micropost内
+.user {
+  margin-top: 5em;
+  padding-top: 0;
+}
 .user_picture {
   width: 50px;
   margin: 5px;
@@ -25,5 +29,12 @@
   p {
     font-size: 20px;
     font-weight: bold;
+  }
+}
+
+/* sign-upページ */ 
+.user-signup-form {
+  span {
+    color: red;
   }
 }
