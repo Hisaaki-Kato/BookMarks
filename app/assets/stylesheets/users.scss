@@ -1,4 +1,7 @@
 
+$gray-lighter: #bebebe;
+$light-green: #ade597;
+
 // micropost内
 .user {
   margin-top: 5em;
@@ -11,15 +14,111 @@
 }
 
 // userページ
-.name_picture{
-  img {
-    width: 100px;
+.user-info {
+  text-align: center;
+  .name-picture{
+    margin-top: 30px;
+    img {
+      width: 100px;
+    }
+    p {
+      font-size: 40px;
+      font-weight: bold;
+    }
   }
-  p {
-    font-size: 40px;
-    font-weight: bold;
+  .post-stats {
+    font-size: 20px;
+    margin-top: 10px;
+    span {
+      margin: 0 15px;
+    }
+    img {
+      width: 30px;
+      margin-right: 10px;
+    }
+  }
+  .follow-stats {
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    a {
+      margin: 0 30px;
+    }
   }
 }
+
+.mypage-nav-tab {
+  font-size: 20px;
+  text-align: center;
+  ul {
+    display: inline-block;
+    li {
+      float: left;
+    }
+    img {
+      width: 30px;
+      margin-left: 5px;
+      padding-bottom: 3px;
+    }
+    .profile-logo {
+      border-radius: 15px;
+    }
+  }
+}
+
+#myTabContent {
+  margin-top: -8.1px;
+  padding: 50px;
+  border: 1px solid $light-green;
+  border-radius: 30px;
+}
+
+#profile {
+  a {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 3px 1px #007bff inset!important;
+    color: #007bff;
+    padding: 5px 10px;
+  }
+  h4 {
+    margin: 20px 10px;
+    span {
+      background: linear-gradient(transparent 70%, $gray-lighter 70%);
+    }
+  }
+  p {
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 3px 1px $gray-lighter inset!important;
+  }
+}
+
+#books {
+  #mypage-new-book-link {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 3px 1px #007bff inset!important;
+    color: #007bff;
+    padding: 5px 10px;
+  }
+  .container {
+    margin-top: 30px;
+  }
+  .card {
+    margin-bottom: 30px;
+
+    img {
+      width: 100%;
+    }
+
+    .card-body {
+      padding: 0;
+      min-height: 70px;
+    }
+  }
+}
+
 
 // user_indexページ
 .users {

@@ -1,91 +1,90 @@
-<% provide(:title, "Mypage") %>
+<% provide(:title, "Myページ") %>
 <div class="container">
-  <section class="user_info">
-    <section class="name_picture">
+  <section class="user-info">
+    <section class="name-picture">
       <%= render "users/user_info", user: @user %>
     </section>
-    <p>メモの数 (<%= @user.microposts.count %>)</p>
-    <p>ボードの数 (<%= @user.boards.count %>)</p>
+    <section class="post-stats">
+      <span><img src="/memos.png" class="memos-logo">学びメモの数 (<%= @user.microposts.count %>)</span>
+      <span><img src="/boards.png" class="boards-logo">学びボードの数 (<%= @user.boards.count %>)</span>
+    </section>
+    <section class="follow-stats">
+      <%= render "shared/follow_stats" %>
+    </section>
   </section>
 </div>
-<div class="row">
-  <ul class="col-md-2"><a href="#profile">プロフィール</a></ul>
-  <ul class="col-md-2"><a href="#books">My本棚</a></ul>
-  <ul class="col-md-2"><a href="#memos">学びメモ</a></ul>
-  <ul class="col-md-2"><a href="#likes">いいねしたメモ</a></ul>
-  <ul class="col-md-2"><a href="#boards">ボード</a></ul>
-  <ul class="col-md-2"><a href="#timeline">タイムライン</a></ul>
+<div class="mypage-nav-tab">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="true">プロフィール<img src="/no-picture.png" class="profile-logo"></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="books-tab" data-toggle="tab" href="#books" role="tab" aria-controls="books" aria-selected="false">My本棚<img src="/books.png" class="books-logo"></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="memos-tab" data-toggle="tab" href="#memos" role="tab" aria-controls="memos" aria-selected="false">学びメモ<img src="/memos.png" class="memos-logo"></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="boards-tab" data-toggle="tab" href="#boards" role="tab" aria-controls="boards" aria-selected="false">学びボード<img src="/boards.png" class="boards-logo"></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="timeline-tab" data-toggle="tab" href="#timeline" role="tab" aria-controls="timeline" aria-selected="false">タイムライン<img src="/timeline.png" class="timeline-logo"></a>
+    </li>
+  </ul>
 </div>
 
-<div id="profile">
-  <h3>プロフィール</h3>
-  <%= link_to "プロフィールを変更する", edit_user_path %>
-  <h4>自己紹介文</h4>
-  <% if not @user.profile.blank? %>
-    <%= @user.profile %>
-  <% else %>
-    <p>自己紹介文は登録されていません。</p>
-  <% end %>
-  <h4>ユーザー名・プロフィール画像</h4>
-  <section class="name_picture">
-    <%= render "users/user_info", user: @user %>
-  </section>
-</div>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <%= link_to "プロフィールを編集する", edit_user_path %>
+    <h4><span>自己紹介文</span></h4>
+    <% if not @user.profile.blank? %>
+      <p><%= @user.profile %></p>
+    <% else %>
+      <p>自己紹介文は登録されていません。</p>
+    <% end %>
+    <h4><span>ユーザー名・プロフィール画像</sapn></h4>
+    <section class="name-picture">
+      <%= render "users/user_info", user: @user %>
+    </section>
+  </div>
 
-<div id="books">
-  <div class="col-md-12">
-    <h3>My本棚</h3>
+  <div class="tab-pane fade" id="books" role="tabpanel" aria-labelledby="books-tab">
+    <%= link_to "新しい本を追加する", new_book_path, id: "mypage-new-book-link" %>
     <% if @read_books.present? %>
-      <ol class="books">
-        <%= render @read_books %>
-      </ol>
+      <div class="container">
+        <div class="row">
+          <%= render "books/mypage_books", books: @read_books %>
+        </div>
+      </div>
     <% else %>
       <p>本棚に追加した本はありません。</p>
     <% end %>
-    <%= link_to "新しい本を追加する", new_book_path %>
   </div>
-</div>
 
-<div id="memos">
-  <div class="col-md-12">
-    <h3>学びメモ</h3>
-    <% if @user.microposts.present? %>
-      <ol class="microposts">
-        <%= render @microposts %>
-      </ol>
-    <% else %>
-      <p>学びメモはありません。</p>
-    <% end %>
+  <div class="tab-pane fade" id="memos" role="tabpanel" aria-labelledby="memos-tab">
+    <div class="col-md-12">
+      <% if @user.microposts.present? %>
+        <ol class="microposts">
+          <%= render @microposts %>
+        </ol>
+      <% else %>
+        <p>学びメモはありません。</p>
+      <% end %>
+    </div>
   </div>
-</div>
 
-<div id="likes"">
-  <div class="col-md-12">
-    <% if @like_microposts.present? %>
-      <h3>いいねしたメモ</h3>
-      <ol class="microposts">
-        <%= render @like_microposts %>
-      </ol>
-    <% else %>
-      <p>いいねしたメモはありません。</p>
-    <% end %>
-  </div>
-</div>
-
-<div id="boards">
-  <div class="col-md-12">
+  <div class="tab-pane fade" id="boards" role="tabpanel" aria-labelledby="boards-tab">
     <% if @user.boards.present? %>
-      <h3>ボード</h3>
       <ol class="boards">
         <%= render @boards %>
       </ol>
     <% else %>
-      <p>ボードはありません。</p>
+      <p>学びボードはありません。</p>
     <% end %>
   </div>
-</div>
 
-<div id="timeline">
-  <h3>タイムライン</h3>
-  <%= render 'shared/feed' %>
+  <div class="tab-pane fade" id="timeline" role="tabpanel" aria-labelledby="timeline-tab">
+    <p>あなたとあなたがフォローしているユーザーの投稿を表示しています。</p>
+    <%= render 'shared/feed' %>
+  </div>
 </div>

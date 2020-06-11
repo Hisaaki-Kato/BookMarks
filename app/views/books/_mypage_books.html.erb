@@ -1,0 +1,12 @@
+<% books.each do |book| %>
+  <div class="col-md-3">
+    <%= link_to book do %>
+      <div class="card">
+        <img class="card-img-top" src="<%= book.image %>">
+        <div class="card-body">
+          <p class="card-text"><%= book.title %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
