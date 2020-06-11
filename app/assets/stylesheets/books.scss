@@ -57,3 +57,26 @@ $medium-green: rgb(44, 172, 71);
     }
   }
 }
+
+/* showページ */ 
+.bookpage-nav-tab {
+  margin-top: 30px;
+  text-align: center;
+  ul {
+    display: inline-block;
+    li {
+      float: left;
+    }
+  }
+}
+
+#bookTabContent {
+  .for-blank {
+    margin: 10px 30px;
+  }
+}
+
+/* ログインしていない場合 */ 
+#not-logged-in-book-memos {
+  margin-top: 30px;
+}

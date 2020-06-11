@@ -21,7 +21,6 @@ class MicropostsController < ApplicationController
     @book = Book.find(micropost_params[:book_id])
     @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save
-      flash[:success] = "Micropost created!"
       redirect_to @book
     else
       flash[:danger] = "正しい内容を入力してください"
@@ -31,7 +30,7 @@ class MicropostsController < ApplicationController
 
   def destroy
     @micropost.destroy
-    flash[:success] = "Micropost deleted"
+    flash[:success] = "学びメモを削除しました。"
     redirect_to request.referrer || root_url
   end
 

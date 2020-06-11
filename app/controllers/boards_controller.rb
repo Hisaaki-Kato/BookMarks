@@ -6,7 +6,6 @@ class BoardsController < ApplicationController
     @book = Book.find(board_params[:book_id])
     @board = current_user.boards.build(board_params)
     if @board.save
-      flash[:success] = "board created!"
       redirect_to @book
     else
       flash[:danger] = "正しい内容を入力してください"
@@ -22,7 +21,7 @@ class BoardsController < ApplicationController
     @user = current_user
     @board = Board.find(params[:id])
     if @board.update_attributes(board_params)
-      flash[:success] = "Myボードが更新されました。"
+      flash[:success] = "学びボードが更新されました。"
       redirect_to @user
     else
       render 'edit'
@@ -31,7 +30,7 @@ class BoardsController < ApplicationController
 
   def destroy
     @board.destroy
-    flash[:success] = "board deleted"
+    flash[:success] = "学びボードを削除しました。"
     redirect_to request.referrer || root_url
   end
 

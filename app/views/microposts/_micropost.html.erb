@@ -8,31 +8,11 @@
       </span>
       
       <%= link_to micropost do %>
-        <div class="micropost-content">
-          <p class="quoted_text">"<%= micropost.quoted_text %>"</p>
-          <p class="content"><%= micropost.content %></p>
-          <p class="timestamp">
-            Posted <%= time_ago_in_words(micropost.created_at) %> ago.
-          </p>
-        </div>
-
-        <span class="like-stats">
-          <span><img src="/comments.png" class="comments-logo">:</span>
-          <span id="comments_<%= micropost.id %>"><%= micropost.comments.count %></span>
-          <span><img src="/likes.png" class="likes-logo">:</span>
-          <span id="likes_<%= micropost.id %>"><%= micropost.likes.count %></span>
-        </span>
+        <%= render "microposts/contents", micropost: micropost %>
+        <%= render "microposts/like_stats", micropost: micropost %>
       <% end %>
       
-      <% if logged_in? %>
-        <%= render "microposts/like_form", micropost: micropost %>
-        <% if current_user?(micropost.user) %>
-          <%= link_to micropost, method: :delete,
-                                 data: { confirm: "この学びメモを削除しますか？" } do %>
-            <span class="delete-link"><img src="/trash.png">メモを削除する</span>
-          <% end %>
-        <% end %>
-      <% end %>
+      <%= render "microposts/like_or_delete", micropost: micropost %>
     </div>
 
     <div class="col-md-3">

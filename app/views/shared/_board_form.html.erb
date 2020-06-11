@@ -2,7 +2,7 @@
   <div class="field">
     <%= f.hidden_field :book_id, value: @book.id %>
     <%= f.hidden_field :title, value: @book.title %>
-    <%= f.text_area :content, placeholder: "Compose new board..." %>
+    <%= f.text_area :content, placeholder: "この書籍の要約を書いてみよう!" %>
   </div>
-  <%= f.submit "Post", class: "btn btn-primary" %>
+  <%= f.submit "学びボードを作成する", class: "btn btn-primary" %>
 <% end %>
