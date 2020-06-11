@@ -1,17 +1,29 @@
-<div class="jumbotron">
+<div class="board">
   <li id="board-<%= board.id %>">
-    <span class="book">
-      <%= render board.book %>
-    </span>
-    <span class="title"><%= board.title %></span>
-    <span class="content"><%= board.content %></span>
-    <span class="timestamp">
-
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <span class="book">
+            <%= render board.book %>
+          </span>
+        </div>
+        <div class="col-md-9">
+          <p class="title"><%= board.title %></p>
+          <section class="content"><%= board.content %></section>
+        </div>
+      </div>
+    </div>
     </span>
     <% if current_user?(board.user) %>
-      <%= link_to "delete", board, method: :delete,
-                                       data: { confirm: "You sure?" } %>
-      <%= link_to "編集", edit_board_path(board) %>
+      <div class="board-links">
+        <%= link_to board, method: :delete,
+                          data: { confirm: "この学びボードを削除しますか？" } do %>
+          <span class="delete-link"><img src="/trash.png">削除</span>
+        <% end %>
+        <%= link_to edit_board_path(board) do %>
+          <span class="edit-link"><img src="/edit.png">編集</span>
+        <% end %>
+      </div>
     <% end %>
   </li>
 </div>

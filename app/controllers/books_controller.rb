@@ -71,7 +71,7 @@ class BooksController < ApplicationController
   def destroy
     @user = current_user
     book.destroy
-    flash[:success] = "Book deleted"
+    flash[:success] = "本棚から削除しました。"
     redirect_to @user
   end
 

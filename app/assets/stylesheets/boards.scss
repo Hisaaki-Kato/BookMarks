@@ -1,3 +1,70 @@
-// Place all the styles related to the Boards controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+$gray-medium-light: #eaeaea;
+$gray-lighter: #bebebe;
+$light-green: #ade597;
+
+.board {
+  border: 3px solid $light-green;
+  border-radius: 30px;
+  margin-bottom: 20px;
+
+  li {
+    list-style: none;
+
+    .book {
+      img {
+        max-width: 100px;
+      }
+      .btn {
+        display: none;
+      }
+    }
+
+    .title {
+      text-align: center;
+      margin-top: 10px;
+      background: linear-gradient(transparent 50%, $light-green 80%);
+    }
+    .content {
+      padding: 5px 10px;
+      background-color: $gray-medium-light;
+    }
+
+    .board-links {
+      margin-left: 10px;
+      margin-bottom: 10px;
+      img {
+        width: 25px;
+        margin-bottom: 3px;
+        margin-right: 3px;
+        margin-left: 10px;
+      }
+      
+    }
+  }
+}
+#boards {
+  .boards {
+    padding: 0;
+  }
+}
+
+/* 新規作成 */
+.board-form {
+  form {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+    border: 1px solid $gray-lighter
+  }
+  .field {
+    margin: 10px 20px;
+    textarea {
+      height: 200px;
+      font-size: 15px;
+      padding: 8px 10px;
+    }
+  }
+  .btn {
+    width: 80%
+  }
+}

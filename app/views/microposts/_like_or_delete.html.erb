@@ -1,0 +1,9 @@
+<% if logged_in? %>
+  <%= render "microposts/like_form", micropost: micropost %>
+  <% if current_user?(micropost.user) %>
+    <%= link_to micropost, method: :delete,
+                           data: { confirm: "この学びメモを削除しますか？" } do %>
+      <span class="delete-link"><img src="/trash.png">メモを削除する</span>
+    <% end %>
+  <% end %>
+<% end %>

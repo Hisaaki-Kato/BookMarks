@@ -1,37 +1,28 @@
 <li id="micropost-<%= micropost.id %>">
-  
-  <%# books/showページでは表示しない %>
-  <% if @book.blank? %>
-    <span>
-      <%= link_to micropost.book do %>
-        <p><img class="book-img in-microposts" src="<%= micropost.book.image %>"></p>
+  <div class="row">
+    <div class="col-md-9">
+      <span class="user">
+        <%= link_to micropost.user do %>
+          <%= render "users/user_info", user: micropost.user %>
+        <% end %>
+      </span>
+      
+      <%= link_to micropost do %>
+        <%= render "microposts/contents", micropost: micropost %>
+        <%= render "microposts/like_stats", micropost: micropost %>
       <% end %>
-    </span>
-  <% end %>
-  
-  <span class="user">
-    <%= link_to micropost.user do %>
-      <%= render "users/user_info", user: micropost.user %>
-    <% end %>
-  </span>
-  <span class="quoted_text"><%= micropost.quoted_text %></span>
-  <span class="content"><%= micropost.content %></span>
-  <span class="timestamp">
-    Posted <%= time_ago_in_words(micropost.created_at) %> ago.
-  </span>
-  <p>
-    <%= link_to micropost do %>
-      <span>コメント数: </span>
-      <span id="likes_<%= micropost.id %>"><%= micropost.comments.count %></span>
-      <span>いいね数: </span>
-      <span id="likes_<%= micropost.id %>"><%= micropost.likes.count %></span>
-    <% end %>
-  </p>
-  <% if logged_in? %>
-    <%= render "microposts/like_form", micropost: micropost %>
-    <% if current_user?(micropost.user) %>
-      <%= link_to "delete", micropost, method: :delete,
-                                      data: { confirm: "You sure?" } %>
-    <% end %>
-  <% end %>
+      
+      <%= render "microposts/like_or_delete", micropost: micropost %>
+    </div>
+
+    <div class="col-md-3">
+      <%# books/showページでは表示しない %>
+      <% if @book.blank? %>
+        <%= link_to micropost.book do %>
+          <img class="book-img in-microposts" src="<%= micropost.book.image %>">
+          <p><%= micropost.book.title %></p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 </li>

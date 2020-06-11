@@ -6,40 +6,99 @@
 
 $gray-medium-light: #eaeaea;
 $gray-lighter: #bebebe;
+$gray-darker: #b6b6b6;
+$light-green: #ade597;
+
+.col-md-8 {
+  h1 {
+    text-align: center;
+  }
+  /* ページネーション */ 
+  ul.pagination {
+    position: relative;
+    left: 36%;
+    li {
+      text-align: center;
+      padding: 5px;
+      border-top: 1px solid $gray-lighter;
+      border-bottom: 1px solid $gray-lighter;
+    }
+    li.active {
+      width: 36px;
+      height: 36px;
+      background-color: $light-green;
+      border-radius: 20px;
+      a {
+        color: white;
+        font-weight: bold;
+      }
+    }
+  }
+}
 
 .microposts {
   list-style: none;
   padding: 0;
   li {
-    padding: 10px 0;
+    padding: 10px;
     border-top: 1px solid #e8e8e8;
   }
-  .user {
-    margin-top: 5em;
-    padding-top: 0;
-  }
-  .quoted_text {
-    display: block;
-    margin-left: 60px;
-    color: $gray-lighter;
-  }
-  .content {
-    display: block;
-    margin-left: 60px;
-    img {
+  .micropost-content {
+    p {
       display: block;
-      padding: 5px 0;
+      margin: 0;
+      padding-left: 20px;
+    }
+    .quoted_text {
+      color: $gray-darker;
+      font-style: italic;
+    }
+    .timestamp {
+      padding-left: 0;
+      text-align: right;
+      font-size: 10px;
+      color: $gray-lighter;
     }
   }
-  .timestamp {
-    color: $gray-lighter;
-    display: block;
-    margin-left: 60px;
+  
+  .like-stats {
+    padding-top: 20px;
+    img {
+      width: 20px;
+      margin-right: 5px;
+      margin-left: 10px;
+    }
+    .likes-logo {
+      padding-bottom: 3px;
+    }
   }
-  .gravatar {
-    float: left;
-    margin-right: 10px;
-    margin-top: 5px;
+
+  .delete-link {
+    margin-top: 20px;
+    img {
+      width: 20px;
+      margin-right: 5px;
+      margin-left: 10px;
+      padding-bottom: 3px;
+    }
+  }
+
+  .like-form {
+    span {
+      background: linear-gradient(transparent 70%, $gray-medium-light 70%);
+      // border-radius: 10px;
+      padding: 5px;
+      img {
+        width: 20px;
+        margin-right: 5px;
+        margin-left: 5px;
+        padding-bottom: 5px;
+      }
+    }
+  }
+
+  .col-md-3 {
+    text-align: center;
   }
 }
 
@@ -54,5 +113,78 @@ span.picture {
   margin-top: 10px;
   input {
     border: 0;
+  }
+}
+
+/* showページ */
+.micropost {
+  margin-top: 30px;
+  .micropost-content {
+    display: block;
+    margin: 10px 50px;
+
+    .quoted_text {
+      color: $gray-darker;
+      font-style: italic;
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+    .content {
+      font-size: 20px;
+    }
+    .timestamp {
+      padding-left: 0;
+      text-align: right;
+      font-size: 12px;
+      color: $gray-lighter;
+    }
+  }
+}
+
+#show-page-stats {
+  margin-bottom: 20px;
+}
+
+.comments {
+  .comments-list {
+    font-size: 20px;
+    margin-top: 5px;
+  }
+}
+
+#liked-users {
+  text-align: center;
+  .users {
+    margin-bottom: 20px;
+    font-size: 20px;
+    border-bottom: 2px solid $gray-lighter;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    li {
+      list-style: none;
+    }
+  }
+}
+
+/* 新規作成 */
+.micropost-form {
+  form {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+    border: 1px solid $gray-lighter
+  }
+  .field {
+    margin: 10px 20px;
+    input {
+      font-size: 15px;
+      padding: 8px 10px;
+      margin-bottom: 3px;
+    }
+  }
+  .btn {
+    width: 80%
   }
 }

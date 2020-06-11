@@ -1,6 +1,8 @@
-<% if user.picture.url.nil? %>
-  <%= image_tag '/no-picture.png', class:"user_picture" %>
-<% else %>
-  <%= image_tag user.picture.url, class:"user_picture" %>
-<% end %>
-<p><%= user.name %></p>
+<p>
+  <% if user.picture.url.nil? %>
+    <%= image_tag '/no-picture.png', class:"user_picture" %>
+  <% else %>
+    <%= image_tag user.picture.url, class:"user_picture" %>
+  <% end %>
+  <span><%= user.name %></span>
+</p>

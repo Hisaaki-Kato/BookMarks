@@ -3,11 +3,8 @@
     <%= f.hidden_field :user_id, value: current_user.id %>
     <%= f.hidden_field :book_id, value: @book.id %>
 
-    <%= f.label :quoted_text, "引用文" %>
-    <%= f.text_field :quoted_text %>
-
-    <%= f.label :content, "学びメモ" %>
-    <%= f.text_field :content %>
+    <%= f.text_field :quoted_text, placeholder: "引用文: この書籍から引用する文を書こう!" %>
+    <%= f.text_field :content, placeholder: "学びメモ: 感じたことや思ったことを自由にメモしよう!" %>
   </div>
-  <%= f.submit "Post", class: "btn btn-primary" %>
+  <%= f.submit "メモを投稿する", class: "btn btn-primary" %>
 <% end %>
