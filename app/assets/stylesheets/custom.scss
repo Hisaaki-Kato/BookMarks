@@ -155,8 +155,14 @@ header {
 
 /* footer */
 footer {
+  display: block;
   width: 100%;
   background-color: black;
+  p {
+    margin: 0;
+    color: white;
+  }
+  
 } 
 
 /* sidebar */
@@ -236,7 +242,6 @@ input {
 .debug_dump {
   background-color: $gray-medium-light;
   clear: both;
-  float: left;
   width: 100%;
   margin-top: 45px;
   @include box_sizing;
