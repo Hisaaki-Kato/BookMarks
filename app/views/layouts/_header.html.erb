@@ -13,27 +13,27 @@
         </div>
       <% end %>
     </div>
-      <ul class="nav navbar-nav navbar-right">
-        
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-          BookMarksについて <b class="caret"></b>
-        </a>
-        <ul class="dropdown-menu">
-          <li><%= link_to "BookMarksとは",   '#' %></li>
-          <li><%= link_to "製作者について",   '#' %></li>
-          <li><%= link_to "お問い合わせ",   '#' %></li>
-        </ul>
+    <div class="menu">
+      <p class="init-bottom">BookMarksについて <img src="/arrow-down.png"></p>
+      <ul class="menu-dropdown">
+        <li><a href="#">BookMarksとは</a></li>
+        <li><a href="#">製作者について</a></li>
+        <li><a href="#">お問い合わせ</a></li>
       </ul>
+    </div>
+    <div>
       <nav>
         <ul class="nav navbar-nav navbar-right">
           <% if logged_in? %>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                Account <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
+            <div class="menu">
+              <p class="init-bottom"><img src="/menu.png"></p>
+              <ul class="menu-dropdown">
+                <li id="header-user-icon">
+                  <%= link_to current_user do %>
+                    <%= render "users/user_info", user: current_user %>
+                  <% end %>
+                </li>
                 <li><%= link_to "他のユーザー", users_path %></li>
-                <li><%= link_to "Myページ", current_user %></li>
                 <li><%= link_to "書籍を探す", new_book_path %></li>
                 <li><%= link_to "設定", edit_user_path(current_user) %></li>
                 <li class="divider"></li>
@@ -41,7 +41,7 @@
                   <%= link_to "ログアウト", logout_path, method: :delete %>
                 </li>
               </ul>
-            </li>
+            </div>
           <% else %>
             <div class="header-login-form">
               <li><%= link_to "新規登録", signup_path, class: "btn btn-danger", id: "header-signin" %></li>

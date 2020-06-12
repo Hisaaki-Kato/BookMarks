@@ -1,14 +1,16 @@
 <h2>検索結果</h2>
-<% books.each do |book| %>
-  <%= link_to new_book_path(title: book[0], image: book[1]) do %>
-    <table class="jumbotron">
-      <tr>
-        <td rowspan='2'><img class="book-img" src="<%= book[1] %>"></td>
-        <td><%= book[0] %></td>
-      </tr>
-      <tr>
-        <td><%= book[2] %></td>
-      </tr>
-    </table>
+<div class="row">
+  <% books.each do |book| %>
+    <div class="col-md-3">
+      <%= link_to new_book_path(title: book[0], image: book[1]) do %>
+        <div class="card">
+          <img class="card-img-top" src="<%= book[1] %>">
+          <div class="card-body">
+            <p class="card-title"><%= book[0] %></p>
+            <p class="card-auther"><%= book[2] %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
   <% end %>
-<% end %>
+</div>

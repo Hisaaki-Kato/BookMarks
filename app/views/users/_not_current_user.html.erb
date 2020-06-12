@@ -15,15 +15,17 @@
   
   <%# micropost %>
   <div class="col-md-8">
-    <h3>学びメモ</h3>
-    <% if @user.microposts.any? %>
-      <%= will_paginate @microposts %>
-      <ol class="microposts">
-        <%= render @microposts %>
-      </ol>
-      <%= will_paginate @microposts %>
-    <% else %>
-      <p>学びメモはまだありません。</p>
-    <% end %>
+    <div id="not-current-user-memos"></div>
+      <h3>学びメモ</h3>
+      <% if @user.microposts.any? %>
+        <%= will_paginate @microposts %>
+        <ol class="microposts">
+          <%= render @microposts %>
+        </ol>
+        <%= will_paginate @microposts %>
+      <% else %>
+        <p>学びメモはまだありません。</p>
+      <% end %>
+    </div>
   </div>
 </div>

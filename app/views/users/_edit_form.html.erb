@@ -1,23 +1,25 @@
 <%= form_for(@user, url: yield(:url)) do |f| %>
   <%= render 'shared/error_messages', object: @user %>
 
-  <%= f.label :name %>
+  <%= f.label :name, "名前" %>
   <%= f.text_field :name, class: 'form-control' %>
 
-  <%= f.label :email %>
+  <%= f.label :email, "メールアドレス" %>
   <%= f.email_field :email, class: 'form-control' %>
 
-  <%= f.label :profile %>
+  <%= f.label :profile, "自己紹介文" %>
   <%= f.text_field :profile, class: 'form-control' %>
 
-  <%= f.label :password %>
+  <%= f.label :password, "パスワード" %>
   <%= f.password_field :password, class: 'form-control' %>
 
-  <%= f.label :password_confirmation %>
+  <%= f.label :password_confirmation, "パスワード (再入力)" %>
   <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-  <span class="picture">
-    <%= f.file_field :picture, accept: '/jpeg,/gif,/png' %>
+  <%= f.label :picture, "プロフィール画像" %>
+  <span class="custom-file">
+    <%= f.label :picture, "画像を選択してください", class: "custom-file-label" %>
+    <%= f.file_field :picture, accept: '/jpeg,/gif,/png', class: "custom-file-input", id: "inputFile" %>
   </span>
 
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>

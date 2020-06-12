@@ -58,6 +58,39 @@ $medium-green: rgb(44, 172, 71);
   }
 }
 
+/* newページ */
+.books-new-form {
+  .btn {
+    margin: 0 10px;
+  }
+}
+
+#books-new-container {
+  margin: 30px 0;
+  .card {
+    margin-bottom: 10px;
+
+    img {
+      width: 100%;
+    }
+
+    .card-body {
+      padding: 5px 10px;
+      min-height: 70px;
+    }
+  }
+  .book-selected {
+    margin-left: 30px;
+    .selected {
+      max-width: 300px;
+    }
+    .btn {
+      width: 100%;
+      margin-bottom: 0;
+    }
+  }
+}
+
 /* showページ */ 
 .bookpage-nav-tab {
   margin-top: 30px;
