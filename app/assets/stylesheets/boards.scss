@@ -68,3 +68,20 @@ $light-green: #ade597;
     width: 80%
   }
 }
+
+/* 編集画面 */
+#board-edit-form {
+  margin: 40px 10px;
+  
+  input {
+    width: 80%;
+    border-radius: 5px;
+  }
+  textarea {
+    width: 500px;
+    height: 500px !important;
+  }
+  .btn {
+    width: 80%;
+  }
+}

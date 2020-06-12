@@ -1,7 +1,7 @@
 <%= form_for(@board) do |f| %>
   <div class="field">
     <%= f.hidden_field :book_id, value: @book.id %>
-    <%= f.hidden_field :title, value: @book.title %>
+    <%= f.text_field :title, placeholder: "学びボードのタイトル" %>
     <%= f.text_area :content, placeholder: "この書籍の要約を書いてみよう!" %>
   </div>
   <%= f.submit "学びボードを作成する", class: "btn btn-primary" %>
