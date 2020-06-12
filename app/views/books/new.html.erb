@@ -1,21 +1,32 @@
 <% provide(:title, '本棚に追加') %>
-<h1>書籍を探す</h1>
-  <%= form_tag(new_book_path, method: :get) do %>
-    <div class="input-group">
-      <%= search_field_tag "keyword", params[:keyword], class: "form-control", placeholder: "キーワード検索" %>
-        <span class="input-group-btn">
-          <%= submit_tag "検索", class: "btn btn-primary" %>
-        </span>
-    </div>
-  <% end %>
+<div class="books-new-form">
+  <h1>書籍を探す</h1>
+    <%= form_tag(new_book_path, method: :get) do %>
+      <div class="input-group">
+        <%= search_field_tag "keyword", params[:keyword], class: "form-control", placeholder: "キーワード検索" %>
+          <span class="input-group-btn">
+            <%= submit_tag "検索", class: "btn btn-secondary" %>
+          </span>
+      </div>
+    <% end %>
+</div>
 
-<% if @books.present? %>
-  <%# 検索結果 %>
-  <%= render "books/result", books: @books %>
-<% elsif @keyword.present? %>
-  <%# 検索結果が存在しない場合 %>
-  <%= render "books/no_result", title: @keyword %>
-<% elsif @title.present? %>
-  <%# 検索した本を選択した場合 %>
-  <%= render "books/new_book_form" %>
-<% end %>
+<div class="container" id="books-new-container">
+  <% if @books.present? %>
+    <%# 検索結果 %>
+    <%= render "books/result", books: @books %>
+  <% elsif @keyword.present? %>
+    <%# 検索結果が存在しない場合 %>
+    <h2>書籍が見つかりません!</h2>
+    <p>下記の内容で登録しますか？</p>
+    <%= render "books/new_book_selected", book: @book,
+                                          title: @keyword,
+                                          image: "/no-image.png" %>
+  <% elsif @title.present? %>
+    <%# 検索した本を選択した場合 %>
+    <h2>選択した本</h2>
+    <%= render "books/new_book_selected", book: @book,
+                                          title: @title,
+                                          image: @image %>
+  <% end %>
+</div>

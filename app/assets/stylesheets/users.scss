@@ -47,6 +47,20 @@ $light-green: #ade597;
   }
 }
 
+/* user/editページ */ 
+.edit_user {
+  margin: 30px 10px;
+
+  .btn {
+    margin-top: 30px;
+  }
+}
+
+/* not-current-userのマイクロポスト */ 
+#not-current-user-memos {
+  margin: 30px;
+}
+
 .mypage-nav-tab {
   font-size: 20px;
   text-align: center;

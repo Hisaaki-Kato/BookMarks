@@ -1,0 +1,16 @@
+<div class="book-selected">
+  <div class="card selected">
+    <img class="card-img-top" src=<%= image %>>
+    <div class="card-body">
+      <p class="card-title"><%= title %></p>
+    </div>
+  
+    <%= form_for(book) do |f| %>
+      <%= render 'shared/error_messages', object: book %>
+      <%= f.hidden_field :title, class: 'form-control', value: "#{title}" %>
+      <%= f.hidden_field :image, class: 'form-control', value: "#{image}" %>
+
+      <%= f.submit '本棚に追加する', class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
