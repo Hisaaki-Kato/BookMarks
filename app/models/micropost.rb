@@ -6,6 +6,7 @@ class Micropost < ApplicationRecord
   belongs_to :book
   default_scope -> { order(created_at: :desc) }
   validates :user_id,     presence: true
+  validates :book_id,     presence: true
   validates :quoted_text, presence: true, length: { maximum: 140 }
   validates :content,     presence: true, length: { maximum: 140 }
 
