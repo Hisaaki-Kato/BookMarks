@@ -72,7 +72,7 @@ RSpec.describe MicropostsController, type: :controller do
         log_in_as(@micropost.user)
         expect{
           delete :destroy, params: { id: @micropost.id }
-        }.to change(@micropost.user.microposts, :count).by(-1)
+        }.to change(Micropost, :count).by(-1)
       end
     end
 
@@ -85,7 +85,7 @@ RSpec.describe MicropostsController, type: :controller do
       it "does not delete the micropost" do
         expect{
           delete :destroy, params: { id: @micropost.id }
-        }.to_not change(@micropost.user.microposts, :count)
+        }.to_not change(Micropost, :count)
       end
 
       #root_urlにリダイレクトすること
@@ -101,11 +101,11 @@ RSpec.describe MicropostsController, type: :controller do
       it "does not delete the micropost" do
         expect{
           delete :destroy, params: { id: @micropost.id }
-        }.to_not change(@micropost.user.microposts, :count)
+        }.to_not change(Micropost, :count)
       end
 
       #login_urlにリダイレクトすること
-      it "redirects to the root_url" do
+      it "redirects to the login_url" do
         delete :destroy, params: { id: @micropost.id }
         expect(response).to redirect_to login_url
       end
