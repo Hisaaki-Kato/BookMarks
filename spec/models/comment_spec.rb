@@ -1,19 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
-  before do
-    @user = create(:user)
-    @book = create(:book)
-    @micropost = create(:micropost,
-                        user_id: @user.id,
-                        book_id: @book.id,)
-  end
 
   #内容、ユーザーID、マイクロポストIDがあれば有効な状態であること
   it "is valid with a content, user_id, micropost_id" do
-    comment = build(:comment,
-                    user_id: @user.id,
-                    micropost_id: @micropost.id)
+    comment = create(:comment)
     expect(comment).to be_valid
   end
   
