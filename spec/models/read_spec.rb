@@ -2,23 +2,17 @@ require 'rails_helper'
 
 RSpec.describe Read, type: :model do
   before do
-    @user = User.create(
-      name: "Hisaaki",
-      email: "tester@example.com",
-      password: "hogehoge"
-    )
-    @book = Book.create(
-      title: "testbook",
-      image: "test.png"
+    @user = create(:user)
+    @book = create(:book)
+    @read = Read.create(
+      user_id: @user.id,
+      book_id: @book.id
     )
   end
 
   #ユーザーID、book-IDがあれば有効な状態であること
   it "is valid with a user_id, book_id" do
-    read = Read.new(
-      user_id: @user.id,
-      book_id: @book.id,
-    )
+    read = @read
     expect(read).to be_valid
   end
   
@@ -38,10 +32,6 @@ RSpec.describe Read, type: :model do
 
   #重複したユーザーID、book-IDのペアは許可しないこと
   it "does not allow duplicate user_id, book_id pairs" do
-    read = Read.create(
-      user_id: @user.id,
-      book_id: @book.id,
-    )
     new_read = Read.new(
       user_id: @user.id,
       book_id: @book.id,

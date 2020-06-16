@@ -2,21 +2,11 @@ require 'rails_helper'
 
 RSpec.describe Like, type: :model do
   before do
-    @user = User.create(
-      name: "Hisaaki",
-      email: "tester@example.com",
-      password: "hogehoge"
-    )
-    @book = Book.create(
-      title: "testbook",
-      image: "test.png"
-    )
-    @micropost = Micropost.create(
-      content: "testcontent",
-      user_id: @user.id,
-      book_id: @book.id,
-      quoted_text: "testquoted_text"
-    )
+    @user = create(:user)
+    @book = create(:book)
+    @micropost = create(:micropost,
+                        user_id: @user.id,
+                        book_id: @book.id)
   end
 
   #ユーザーID、マイクロポストIDがあれば有効な状態であること

@@ -2,16 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Relationship, type: :model do
   before do
-    @user1 = User.create(
-      name: "Hisaaki",
-      email: "tester@example.com",
-      password: "hogehoge"
-    )
-    @user2 = User.create(
-      name: "Kato",
-      email: "tester2@example.com",
-      password: "foobar"
-    )
+    @user1 = create(:user)
+    @user2 = create(:tester)
   end
 
   #follower-ID、followed-IDがあれば有効な状態であること
