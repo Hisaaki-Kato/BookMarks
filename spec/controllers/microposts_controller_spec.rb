@@ -67,7 +67,7 @@ RSpec.describe MicropostsController, type: :controller do
     end
     #許可されたユーザーとして
     context "as an authorized user" do
-      #ボードを削除できること
+      #ポストを削除できること
       it "deletes the micropost" do
         log_in_as(@micropost.user)
         expect{
@@ -81,7 +81,7 @@ RSpec.describe MicropostsController, type: :controller do
       before do
         log_in_as(@other_user)
       end
-      #ボードを削除できないこと
+      #ポストを削除できないこと
       it "does not delete the micropost" do
         expect{
           delete :destroy, params: { id: @micropost.id }
@@ -97,7 +97,7 @@ RSpec.describe MicropostsController, type: :controller do
 
     #ゲストユーザーとして
     context "as a guest user" do
-      #ボードを削除できないこと
+      #ポストを削除できないこと
       it "does not delete the micropost" do
         expect{
           delete :destroy, params: { id: @micropost.id }
