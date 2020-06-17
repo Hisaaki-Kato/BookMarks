@@ -2,11 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Board, type: :model do
   before do
-    @user = create(:user)
-    @book = create(:book)
-    @board = create(:board,
-                    user_id: @user.id,
-                    book_id: @book.id)
+    @board = create(:board)
   end
 
   #タイトル、ユーザーID、book-ID、内容があれば有効な状態であること
@@ -52,11 +48,11 @@ RSpec.describe Board, type: :model do
 
   #ユーザー単位では重複したbook_idを許可しないこと
   it "does not allow duplicate book_id per user" do
-    new_board = @user.boards.build(
-      title: "anotherboard",
-      book_id: @book.id,
-      content: "anothercontent"
-    )
+    new_board = build(:board,
+                      title: "anotherboard",
+                      content: "anothercontent",
+                      user_id: @board.user.id,
+                      book_id: @board.book.id)
     new_board.valid?
     expect(new_board.errors[:book_id]).to include("has already been taken")
   end

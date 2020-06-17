@@ -7,6 +7,7 @@ class BooksController < ApplicationController
   require 'httparty'
 
   before_action :logged_in_user, only: [:new, :create, :destroy]
+  before_action :admin_user,     only: :destroy
 
   def show
     @book = Book.find(params[:id])
@@ -69,15 +70,19 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    @user = current_user
+    book = Book.find(params[:id])
     book.destroy
     flash[:success] = "本棚から削除しました。"
-    redirect_to @user
+    redirect_to root_path
   end
 
   private
 
     def book_params
       params.require(:book).permit(:keyword, :title, :image)
+    end
+
+    def admin_user
+      redirect_to(root_url) unless current_user.admin?
     end
 end

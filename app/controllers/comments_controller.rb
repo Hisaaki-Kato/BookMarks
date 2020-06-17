@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
-  before_action :logged_in_user
+  before_action :logged_in_user, only: [:create, :destroy]
+  before_action :correct_user,   only: :destroy
 
   def create
     @micropost = Micropost.find(params[:micropost_id])
@@ -24,5 +25,10 @@ class CommentsController < ApplicationController
 
     def comment_params
       params.require(:comment).permit(:content)
+    end
+
+    def correct_user
+      comment = current_user.comments.where(id: params[:comment_id])
+      redirect_to root_url if comment.blank?
     end
 end

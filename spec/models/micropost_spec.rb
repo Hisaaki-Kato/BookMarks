@@ -1,16 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Micropost, type: :model do
-  before do
-    @user = create(:user)
-    @book = create(:book)
-  end
 
   #内容、ユーザーID、book-ID、引用文があれば有効な状態であること
   it "is valid with a content, user_id, book_id, quoted_text" do
-    micropost = build(:micropost,
-                      user_id: @user.id,
-                      book_id: @book.id,)
+    micropost = create(:micropost)
     expect(micropost).to be_valid
   end
   
