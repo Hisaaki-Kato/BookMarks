@@ -22,7 +22,7 @@ class BoardsController < ApplicationController
     @board = Board.find(params[:id])
     if @board.update_attributes(board_params)
       flash[:success] = "学びボードが更新されました。"
-      redirect_to @user
+      redirect_to @board.book
     else
       render 'edit'
     end

@@ -28,9 +28,7 @@
   <%# micropost %>
   <div class="tab-pane fade show active" id="book_memos" role="tabpanel" aria-labelledby="book-memos-tab">
     <section class="micropost-form">
-      <% if @book.read_by?(current_user) %>
-        <%= render 'shared/micropost_form' %>
-      <% end %>
+      <%= render 'shared/micropost_form' %>
     </section>
     <% if @my_microposts.any? %>
       <ol class="microposts">
