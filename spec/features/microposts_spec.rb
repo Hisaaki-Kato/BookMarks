@@ -36,11 +36,20 @@ RSpec.feature "Microposts", type: :feature do
 
     #ユーザーは自分のポストを削除する
     scenario "user deletes own micropost" do
-      micropost = create(:micropost, user_id: @user.id, book_id: @book.id)
+      other_user = create(:tester)
+      other_micropost = create(:micropost,
+                               user_id: other_user.id,
+                               book_id: @book.id)
+      my_micropost = create(:micropost,
+                            user_id: @user.id,
+                            book_id: @book.id)
       expect {
         visit book_path(@book.id)
-        click_link "メモを削除する"
+        within "#micropost-#{my_micropost.id}" do
+          click_link "メモを削除する"
+        end
         expect(page).to have_content "学びメモを削除しました。"
+        expect(page).to_not have_selector "li#micropost-#{my_micropost.id}"  
       }.to change(@user.microposts, :count).by(-1)
     end
   end
