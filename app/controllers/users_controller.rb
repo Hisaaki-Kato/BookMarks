@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy,
                                         :following, :followers]
   before_action :correct_user,   only: [:edit, :update]
+  before_action :test_user,      only: [:edit, :update]
   before_action :admin_user,     only: :destroy
 
   def index
@@ -84,6 +85,11 @@ class UsersController < ApplicationController
       redirect_to(root_url) unless current_user?(@user)
     end
 
+    def test_user
+      redirect_to(root_url) if current_user.name == "Test User"
+      flash[:danger] = "テストユーザーではユーザー情報の編集はできません。"
+    end
+    
     def admin_user
       redirect_to(root_url) unless current_user.admin?
     end
