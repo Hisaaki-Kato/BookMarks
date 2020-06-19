@@ -1,0 +1,10 @@
+inherit_from: rubocop-todo.yml
+
+# 日本語でのコメントを許可
+AsciiComments:
+  Enabled: false
+
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - tmp/**/*

@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy,
-                                        :following, :followers]
-  before_action :correct_user,   only: [:edit, :update]
-  before_action :test_user,      only: [:edit, :update]
+  before_action :logged_in_user, only: %i[index edit update destroy
+                                          following followers]
+  before_action :correct_user,   only: %i[edit update]
+  before_action :test_user,      only: %i[edit update]
   before_action :admin_user,     only: :destroy
 
   def index
@@ -11,7 +13,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @microposts = @user.microposts.includes(:user).paginate(page: params[:page], 
+    @microposts = @user.microposts.includes(:user).paginate(page: params[:page],
                                                             per_page: 20)
     if logged_in?
       @read_books = @user.read_books
@@ -30,7 +32,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] = "ようこそ!BookMarksへ!"
+      flash[:success] = 'ようこそ!BookMarksへ!'
       redirect_to @user
     else
       render 'new'
@@ -44,7 +46,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      flash[:success] = "プロフィールが更新されました。"
+      flash[:success] = 'プロフィールが更新されました。'
       redirect_to @user
     else
       render 'edit'
@@ -53,12 +55,12 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "ユーザーを削除しました。"
+    flash[:success] = 'ユーザーを削除しました。'
     redirect_to users_url
   end
 
   def following
-    @title = "フォローしているユーザー"
+    @title = 'フォローしているユーザー'
     @user  = User.find(params[:id])
     @users = @user.following.paginate(page: params[:page])
     @count = @user.following.count
@@ -66,7 +68,7 @@ class UsersController < ApplicationController
   end
 
   def followers
-    @title = "フォロワー"
+    @title = 'フォロワー'
     @user  = User.find(params[:id])
     @users = @user.followers.paginate(page: params[:page])
     @count = @user.followers.count
@@ -75,22 +77,22 @@ class UsersController < ApplicationController
 
   private
 
-    def user_params
-      params.require(:user).permit(:name, :email, :profile, :picture,
-                                   :password, :password_confirmation)
-    end
+  def user_params
+    params.require(:user).permit(:name, :email, :profile, :picture,
+                                 :password, :password_confirmation)
+  end
 
-    def correct_user
-      @user = User.find(params[:id])
-      redirect_to(root_url) unless current_user?(@user)
-    end
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless current_user?(@user)
+  end
 
-    def test_user
-      redirect_to(root_url) if current_user.name == "Test User"
-      flash[:danger] = "テストユーザーではユーザー情報の編集はできません。"
-    end
-    
-    def admin_user
-      redirect_to(root_url) unless current_user.admin?
-    end
+  def test_user
+    redirect_to(root_url) if current_user.name == 'Test User'
+    flash[:danger] = 'テストユーザーではユーザー情報の編集はできません。'
+  end
+
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
+  end
 end

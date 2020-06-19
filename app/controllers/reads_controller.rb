@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class ReadsController < ApplicationController
   before_action :logged_in_user
-  before_action :correct_user,  only: :destroy
+  before_action :correct_user, only: :destroy
 
   def create
     read = current_user.reads.build(book_id: params[:book_id])
@@ -18,8 +20,8 @@ class ReadsController < ApplicationController
 
   private
 
-    def correct_user
-      read = Read.where(book_id: params[:book_id], user_id: current_user.id)
-      redirect_to root_url if read.blank?
-    end
+  def correct_user
+    read = Read.where(book_id: params[:book_id], user_id: current_user.id)
+    redirect_to root_url if read.blank?
+  end
 end
