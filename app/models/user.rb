@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   has_many :reads,      dependent: :destroy
   has_many :read_books, through: :reads, source: :book
   has_many :microposts, dependent: :destroy
   has_many :comments,   dependent: :destroy
   has_many :boards,     dependent: :destroy
-  has_many :active_relationships, class_name:  "Relationship",
-                                  foreign_key: "follower_id",
-                                  dependent:   :destroy
-  has_many :passive_relationships, class_name:  "Relationship",
-                                   foreign_key: "followed_id",
-                                   dependent:   :destroy
+  has_many :active_relationships, class_name: 'Relationship',
+                                  foreign_key: 'follower_id',
+                                  dependent: :destroy
+  has_many :passive_relationships, class_name: 'Relationship',
+                                   foreign_key: 'followed_id',
+                                   dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :likes, dependent: :destroy
@@ -17,7 +19,7 @@ class User < ApplicationRecord
 
   before_save { self.email = email.downcase }
   validates :name,  presence: true, length: { maximum: 50 }
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
@@ -26,11 +28,11 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
-  #画像アップロード用
+  # 画像アップロード用
   mount_uploader :picture, PictureUploader
   validate :picture_size
 
-  def User.digest(string)
+  def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
@@ -46,21 +48,19 @@ class User < ApplicationRecord
   def follow(other_user)
     following << other_user
   end
-  
+
   def unfollow(other_user)
     active_relationships.find_by(followed_id: other_user.id).destroy
   end
-  
+
   def following?(other_user)
     following.include?(other_user)
   end
 
   private
 
-    # アップロードされた画像のサイズをバリデーションする
-    def picture_size
-      if picture.size > 5.megabytes
-        errors.add(:picture, "should be less than 5MB")
-      end
-    end
+  # アップロードされた画像のサイズをバリデーションする
+  def picture_size
+    errors.add(:picture, 'should be less than 5MB') if picture.size > 5.megabytes
+  end
 end

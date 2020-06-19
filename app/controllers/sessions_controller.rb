@@ -1,11 +1,11 @@
-class SessionsController < ApplicationController
+# frozen_string_literal: true
 
-  def new
-  end
+class SessionsController < ApplicationController
+  def new; end
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
+    if user&.authenticate(params[:session][:password])
       log_in user
       redirect_back_or user
     else
@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
   end
 
   def test_create
-    tester = User.find_by(email: "test@example.com")
+    tester = User.find_by(email: 'test@example.com')
     log_in tester
     redirect_to tester
   end

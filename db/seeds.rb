@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -5,18 +7,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create!(name:  "Admin User",
-  email: "Admin@example.com",
-  password:              "foobar",
-  password_confirmation: "foobar",
-  admin: true)
+User.create!(name: 'Admin User',
+             email: 'Admin@example.com',
+             password: 'foobar',
+             password_confirmation: 'foobar',
+             admin: true)
 
-User.create!(name:  "Test User",
-  email: "test@example.com",
-  password:              "hogehoge",
-  password_confirmation: "hogehoge",
-  admin: false,
-  profile: "私はテストユーザーです。")
+User.create!(name: 'Test User',
+             email: 'test@example.com',
+             password: 'hogehoge',
+             password_confirmation: 'hogehoge',
+             admin: false,
+             profile: '私はテストユーザーです。')
 
 # #book
 # Book.create!(title: "test-book",
@@ -37,7 +39,7 @@ User.create!(name:  "Test User",
 # #board
 # title = 'board-title'
 # content_board = 'testboard'
-# users.each { |user| 
+# users.each { |user|
 #   user.boards.create!(title: title,content: content_board,
 #                                    book_id: 1)
 #   user.boards.create!(title: title,content: content_board + '2',
@@ -50,7 +52,7 @@ User.create!(name:  "Test User",
 #   content_comment = 'testcomment'
 #   users.each {
 #     |user| user.comments.create!(micropost_id: 1,
-#                                  content: content_comment) 
+#                                  content: content_comment)
 #   }
 # end
 

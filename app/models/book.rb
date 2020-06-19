@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Book < ApplicationRecord
   has_many :reads,         dependent: :destroy
   has_many :reading_users, through: :reads, source: :user
@@ -6,7 +8,7 @@ class Book < ApplicationRecord
 
   default_scope -> { order(created_at: :desc) }
   validates :title,   presence: true
-  validates :image,   uniqueness: {scope: :title}
+  validates :image,   uniqueness: { scope: :title }
 
   def read_by?(user)
     reads.where(user_id: user.id).exists?
