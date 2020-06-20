@@ -8,6 +8,7 @@ $gray-medium-light: #eaeaea;
 $gray-lighter: #bebebe;
 $gray-darker: #b6b6b6;
 $light-green: #ade597;
+$medium-green: #74ce50;
 
 .col-md-8 {
   h1 {
@@ -186,5 +187,24 @@ span.picture {
   }
   .btn {
     width: 80%
+  }
+}
+
+/* slick_slider */ 
+.slick_div {
+  background-color: $medium-green;
+  border-bottom: 5px solid $light-green;
+  height: 350px;
+}
+
+.slick_slider {
+  height: 100%;
+  padding: 0;
+  li {
+    margin: 30px 50px;
+  }
+  img {
+    height: 100%;
+    margin: 0 100px;
   }
 }

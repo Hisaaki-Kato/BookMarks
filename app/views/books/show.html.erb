@@ -1,26 +1,28 @@
 <% provide(:title, @book.title) %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="book_info">
-      <h1>
-        <%= @book.title %>
-      </h1>
-      <p><img class="book-img" src="<%= @book.image %>"></p>
-      <% if logged_in? %>
-        <%= render "books/read_form", book: @book %>
-        <% if current_user.admin? %>
-          <%= link_to "delete", @book, method: :delete,
-                                       data: { confirm: "You sure?" } %>
+<div class="container">
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="book_info">
+        <h1>
+          <%= @book.title %>
+        </h1>
+        <p><img class="book-img" src="<%= @book.image %>"></p>
+        <% if logged_in? %>
+          <%= render "books/read_form", book: @book %>
+          <% if current_user.admin? %>
+            <%= link_to "delete", @book, method: :delete,
+                                        data: { confirm: "You sure?" } %>
+          <% end %>
         <% end %>
-      <% end %>
-    </section>
-  </aside>
+      </section>
+    </aside>
 
-  <div class="col-md-8">
-    <% if logged_in? %>
-      <%= render "books/show_logged_in" %>
-    <% else %>
-      <%= render "books/show_not_logged_in" %>
-    <% end %>
+    <div class="col-md-8">
+      <% if logged_in? %>
+        <%= render "books/show_logged_in" %>
+      <% else %>
+        <%= render "books/show_not_logged_in" %>
+      <% end %>
+    </div>
   </div>
 </div>

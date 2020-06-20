@@ -1,21 +1,24 @@
 <% provide(:title, 'HOME') %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="popular-books">
-      <h1><img id="ranking-logo" src="/ranking.png">人気の書籍ランキング</h1>
-      <%= render @popular_books %>
-      <p id="search-other-books"><%= link_to "他の本を探してみる>>", new_book_path %></p>
-    </section>
-  </aside>
+<%= render 'microposts/slider' %>
+<div class="container">
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="popular-books">
+        <h1><img id="ranking-logo" src="/ranking.png">人気の書籍ランキング</h1>
+        <%= render @popular_books %>
+        <p id="search-other-books"><%= link_to "他の本を探してみる>>", new_book_path %></p>
+      </section>
+    </aside>
 
-  <div class="col-md-8">
-    <h1>最新の投稿</h1>
+    <div class="col-md-8">
+      <h1>最新の投稿</h1>
 
-    <%= will_paginate @microposts %>
-    <ul class="microposts">
-      <%= render @microposts %>
-    </ul>
+      <%= will_paginate @microposts %>
+      <ul class="microposts">
+        <%= render @microposts %>
+      </ul>
 
-    <%= will_paginate @microposts %>
+      <%= will_paginate @microposts %>
+    </div>
   </div>
 </div>

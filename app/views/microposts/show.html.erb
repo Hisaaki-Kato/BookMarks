@@ -1,36 +1,38 @@
 <% provide(:title, '学びメモ') %>
-<div class="micropost">
-  <span class="name_picture">
-    <%= link_to @micropost.user do %>
-      <%= render "users/user_info", user: @micropost.user %>
-    <% end %>
-  </span>
-  <%= render "microposts/contents", micropost: @micropost %>
-</div>
-<div class=microposts id="show-page-stats">
-  <%= render "microposts/like_stats", micropost: @micropost %>
-  <%= render "microposts/like_or_delete", micropost: @micropost %>
-</div>
-<div class="row">
-  <div class="col-md-8">
-    <% if logged_in? %>
-      <%= render "comments/comment_form" %>
-    <% end %>
-    <ul class="comments">
-      <p class="comments-list">コメント一覧</p>
-      <%= render @comments %>
-    </ul>
-  </div>
-  <div class="col-md-4" id="liked-users">
-    <p class="users">いいねしているユーザー</p>
-    <ul class="likes">
-      <% @micropost.likes.each do |like| %>
-        <li>
-          <%= link_to like.user do %> 
-            <%= render "users/user_info", user: like.user %>
-          <% end %>
-        </li>
+<div class="container">
+  <div class="micropost">
+    <span class="name_picture">
+      <%= link_to @micropost.user do %>
+        <%= render "users/user_info", user: @micropost.user %>
       <% end %>
-    </ul>
+    </span>
+    <%= render "microposts/contents", micropost: @micropost %>
+  </div>
+  <div class=microposts id="show-page-stats">
+    <%= render "microposts/like_stats", micropost: @micropost %>
+    <%= render "microposts/like_or_delete", micropost: @micropost %>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <% if logged_in? %>
+        <%= render "comments/comment_form" %>
+      <% end %>
+      <ul class="comments">
+        <p class="comments-list">コメント一覧</p>
+        <%= render @comments %>
+      </ul>
+    </div>
+    <div class="col-md-4" id="liked-users">
+      <p class="users">いいねしているユーザー</p>
+      <ul class="likes">
+        <% @micropost.likes.each do |like| %>
+          <li>
+            <%= link_to like.user do %> 
+              <%= render "users/user_info", user: like.user %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>
