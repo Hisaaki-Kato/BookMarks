@@ -1,30 +1,32 @@
 <% provide(:title, "ログイン") %>
-<h1>ログイン</h1>
 
-<div class="row">
-  <div class="col-md-6">
-    <div class="session-login-form">
-      <%= form_for(:session, url: login_path) do |f| %>
+<div class="container">
+  <h1>ログイン</h1>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="session-login-form">
+        <%= form_for(:session, url: login_path) do |f| %>
 
-        <%= f.label :email, "メールアドレス" %><span>（必須）</span>
-        <%= f.email_field :email, class: 'form-control' %>
+          <%= f.label :email, "メールアドレス" %><span>（必須）</span>
+          <%= f.email_field :email, class: 'form-control' %>
 
-        <%= f.label :password, "パスワード" %><span>（必須）</span>
-        <%= f.password_field :password, class: 'form-control' %>
+          <%= f.label :password, "パスワード" %><span>（必須）</span>
+          <%= f.password_field :password, class: 'form-control' %>
 
-        <%= f.submit "ログイン", class: "btn btn-primary" %>
-      <% end %>
+          <%= f.submit "ログイン", class: "btn btn-primary" %>
+        <% end %>
 
-      <p>まだ会員登録していませんか? <%= link_to "ここから新規登録してください!", signup_path %></p>
+        <p>まだ会員登録していませんか? <%= link_to "ここから新規登録してください!", signup_path %></p>
+      </div>
     </div>
-  </div>
-  <div class="col-md-6" id="test-user-login-form">
-    <div>
-      <p>このwebアプリは<a href="https://github.com/Hisaaki-Kato">@Hisaaki-Kato</a>のポートフォリオとして作成されています。</p>
-      <p>下記のリンクからテストユーザーとしてログインして、機能を体験してみてください！</p>
-      <%= form_for(:session, url: tester_path) do |f| %>
-        <%= f.submit "テストユーザーとしてログイン", class: "btn btn-info" %>
-      <% end %>
+    <div class="col-md-6" id="test-user-login-form">
+      <div>
+        <p>このwebアプリは<a href="https://github.com/Hisaaki-Kato">@Hisaaki-Kato</a>のポートフォリオとして作成されています。</p>
+        <p>下記のリンクからテストユーザーとしてログインして、機能を体験してみてください！</p>
+        <%= form_for(:session, url: tester_path) do |f| %>
+          <%= f.submit "テストユーザーとしてログイン", class: "btn btn-info" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
