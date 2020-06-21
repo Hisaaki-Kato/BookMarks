@@ -1,5 +1,5 @@
 current directory: /mnt/c/Users/adwis/Desktop/develop/Rails_projects/BookMarks/vendor/bundle/ruby/2.7.0/gems/sassc-2.4.0/ext
-/home/hisaaki/.rbenv/versions/2.7.1/bin/ruby -I /home/hisaaki/.rbenv/versions/2.7.1/lib/ruby/2.7.0 -r ./siteconf20200606-2132-122gkkl.rb extconf.rb
+/home/hisaaki/.rbenv/versions/2.7.1/bin/ruby -I /home/hisaaki/.rbenv/versions/2.7.1/lib/ruby/2.7.0 -r ./siteconf20200622-9952-59ms01.rb extconf.rb
 creating Makefile
 
 current directory: /mnt/c/Users/adwis/Desktop/develop/Rails_projects/BookMarks/vendor/bundle/ruby/2.7.0/gems/sassc-2.4.0/ext
@@ -77,4 +77,4 @@ linking shared-object sassc/libsass.so
 
 current directory: /mnt/c/Users/adwis/Desktop/develop/Rails_projects/BookMarks/vendor/bundle/ruby/2.7.0/gems/sassc-2.4.0/ext
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 libsass.so ./.gem.20200606-2132-oemyuq/sassc
+/usr/bin/install -c -m 0755 libsass.so ./.gem.20200622-9952-dz73oz/sassc

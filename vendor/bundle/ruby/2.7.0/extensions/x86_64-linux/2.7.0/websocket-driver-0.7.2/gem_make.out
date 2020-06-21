@@ -1,5 +1,5 @@
 current directory: /mnt/c/Users/adwis/Desktop/develop/Rails_projects/BookMarks/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.2/ext/websocket-driver
-/home/hisaaki/.rbenv/versions/2.7.1/bin/ruby -I /home/hisaaki/.rbenv/versions/2.7.1/lib/ruby/2.7.0 -r ./siteconf20200523-642-nnukaj.rb extconf.rb
+/home/hisaaki/.rbenv/versions/2.7.1/bin/ruby -I /home/hisaaki/.rbenv/versions/2.7.1/lib/ruby/2.7.0 -r ./siteconf20200622-9241-83qqp7.rb extconf.rb
 creating Makefile
 
 current directory: /mnt/c/Users/adwis/Desktop/develop/Rails_projects/BookMarks/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.2/ext/websocket-driver
@@ -12,4 +12,4 @@ linking shared-object websocket_mask.so
 
 current directory: /mnt/c/Users/adwis/Desktop/develop/Rails_projects/BookMarks/vendor/bundle/ruby/2.7.0/gems/websocket-driver-0.7.2/ext/websocket-driver
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 websocket_mask.so ./.gem.20200523-642-11on2eu
+/usr/bin/install -c -m 0755 websocket_mask.so ./.gem.20200622-9241-crh52g

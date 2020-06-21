@@ -1,5 +1,5 @@
 current directory: /mnt/c/Users/adwis/Desktop/develop/Rails_projects/BookMarks/vendor/bundle/ruby/2.7.0/gems/ffi-1.13.1/ext/ffi_c
-/home/hisaaki/.rbenv/versions/2.7.1/bin/ruby -I /home/hisaaki/.rbenv/versions/2.7.1/lib/ruby/2.7.0 -r ./siteconf20200619-3294-1npqww0.rb extconf.rb
+/home/hisaaki/.rbenv/versions/2.7.1/bin/ruby -I /home/hisaaki/.rbenv/versions/2.7.1/lib/ruby/2.7.0 -r ./siteconf20200622-9952-1eolfk4.rb extconf.rb
 checking for ffi.h... no
 checking for ffi.h in /usr/local/include,/usr/include/ffi,/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/ffi,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include/ffi... no
 creating extconf.h
@@ -160,4 +160,4 @@ compiling Types.c
 compiling Variadic.c
 compiling ffi.c
 linking shared-object ffi_c.so
-/usr/bin/install -c -m 0755 ffi_c.so ./.gem.20200619-3294-kg1uk7
+/usr/bin/install -c -m 0755 ffi_c.so ./.gem.20200622-9952-1x2g0qh

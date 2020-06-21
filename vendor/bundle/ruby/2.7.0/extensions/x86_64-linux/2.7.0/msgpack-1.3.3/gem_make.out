@@ -1,5 +1,5 @@
 current directory: /mnt/c/Users/adwis/Desktop/develop/Rails_projects/BookMarks/vendor/bundle/ruby/2.7.0/gems/msgpack-1.3.3/ext/msgpack
-/home/hisaaki/.rbenv/versions/2.7.1/bin/ruby -I /home/hisaaki/.rbenv/versions/2.7.1/lib/ruby/2.7.0 -r ./siteconf20200523-1119-cfc0ue.rb extconf.rb
+/home/hisaaki/.rbenv/versions/2.7.1/bin/ruby -I /home/hisaaki/.rbenv/versions/2.7.1/lib/ruby/2.7.0 -r ./siteconf20200622-9952-7uyel3.rb extconf.rb
 checking for ruby/st.h... yes
 checking for st.h... yes
 checking for rb_str_replace() in ruby.h... yes
@@ -81,4 +81,4 @@ linking shared-object msgpack/msgpack.so
 
 current directory: /mnt/c/Users/adwis/Desktop/develop/Rails_projects/BookMarks/vendor/bundle/ruby/2.7.0/gems/msgpack-1.3.3/ext/msgpack
 make "DESTDIR=" install
-/usr/bin/install -c -m 0755 msgpack.so ./.gem.20200523-1119-mdw5py/msgpack
+/usr/bin/install -c -m 0755 msgpack.so ./.gem.20200622-9952-aqu4qx/msgpack

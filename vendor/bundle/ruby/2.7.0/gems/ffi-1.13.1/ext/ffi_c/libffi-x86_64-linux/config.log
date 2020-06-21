@@ -30,8 +30,6 @@ uname -v = #836-Microsoft Mon May 05 16:04:00 PST 2020
 PATH: /home/hisaaki/.rbenv/versions/2.7.1/bin
 PATH: /home/hisaaki/.rbenv/libexec
 PATH: /home/hisaaki/.rbenv/plugins/ruby-build/bin
-PATH: /home/hisaaki/.rbenv/shims
-PATH: /home/hisaaki/.rbenv/bin
 PATH: /home/hisaaki/.nvm/versions/node/v12.16.3/bin
 PATH: /home/hisaaki/.rbenv/shims
 PATH: /home/hisaaki/.rbenv/bin
