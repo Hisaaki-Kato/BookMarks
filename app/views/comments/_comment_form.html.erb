@@ -1,6 +1,6 @@
 <%= form_for(@comment, url: micropost_comments_path(@micropost.id)) do |f| %>
   <div class="field">
-    <%= f.text_area :content, placeholder: "Compose new comment..." %>
+    <%= f.text_area :content, placeholder: "コメントを送信してみよう！" %>
   </div>
-  <%= f.submit "Post", class: "btn btn-primary" %>
+  <%= f.submit "送信する", class: "btn btn-primary" %>
 <% end %>
