@@ -43,7 +43,7 @@ RSpec.feature 'Books', type: :feature do
               fill_in 'keyword', with: 'ruby'
               click_button '検索'
             end
-            expect(page).to have_selector('div.col-md-3', count: 10)
+            expect(page).to have_selector('div.col-md-3', count: 12)
             within first('div.col-md-3') do
               find('a').click
             end

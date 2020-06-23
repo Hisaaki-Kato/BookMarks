@@ -88,8 +88,10 @@ class UsersController < ApplicationController
   end
 
   def test_user
-    redirect_to(root_url) if current_user.name == 'Test User'
-    flash[:danger] = 'テストユーザーではユーザー情報の編集はできません。'
+    if current_user.name == 'Test User'
+      redirect_to(root_url) 
+      flash[:danger] = 'テストユーザーではユーザー情報の編集はできません。'
+    end
   end
 
   def admin_user
