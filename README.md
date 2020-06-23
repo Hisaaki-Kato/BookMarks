@@ -1,6 +1,7 @@
 # BookMarks
 このアプリケーションは、Ruby/Ruby on railsによって作成された良書との出会いを促進する書籍特化型SNSサービスです。
 [https://www.book-marks-app.net/]
+![demo](https://raw.github.com/wiki/Hisaaki-Kato/BookMarks/images/screenshot.png)
 
 ## 機能・使用技術一覧
 
