@@ -49,7 +49,7 @@
 
 1. リポジトリをcloneし、アプリケーションディレクトリに移動してください。
 ```bash
-$ git clone ~~~
+$ git clone git@github.com:Hisaaki-Kato/BookMarks.git
 $ cd BookMarks/
 ```
 
