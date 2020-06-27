@@ -13,12 +13,12 @@
     <div class="col-md-8">
       <h1>最新の投稿</h1>
 
-      <%= will_paginate @microposts %>
+      <%= paginate @microposts %>
       <ul class="microposts">
         <%= render @microposts %>
       </ul>
 
-      <%= will_paginate @microposts %>
+      <%= paginate @microposts %>
     </div>
   </div>
 </div>

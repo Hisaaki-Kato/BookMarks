@@ -15,24 +15,22 @@ $medium-green: #74ce50;
     text-align: center;
   }
   /* ページネーション */ 
-  ul.pagination {
+  nav.pagination {
     position: relative;
     left: 36%;
-    li {
+    span {
       text-align: center;
       padding: 5px;
       border-top: 1px solid $gray-lighter;
       border-bottom: 1px solid $gray-lighter;
     }
-    li.active {
+    span.current {
       width: 36px;
       height: 36px;
       background-color: $light-green;
       border-radius: 20px;
-      a {
-        color: white;
-        font-weight: bold;
-      }
+      color: white;
+      font-weight: bold;
     }
   }
 }
