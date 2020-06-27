@@ -8,13 +8,12 @@ class UsersController < ApplicationController
   before_action :admin_user,     only: :destroy
 
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.page(params[:page])
   end
 
   def show
     @user = User.find(params[:id])
-    @microposts = @user.microposts.includes(:user).paginate(page: params[:page],
-                                                            per_page: 20)
+    @microposts = @user.microposts.includes(:user).page(params[:page]).per(20)
     if logged_in?
       @read_books = @user.read_books
       @read_book = current_user.read_books.build
@@ -62,7 +61,7 @@ class UsersController < ApplicationController
   def following
     @title = 'フォローしているユーザー'
     @user  = User.find(params[:id])
-    @users = @user.following.paginate(page: params[:page])
+    @users = @user.following.page(params[:page]).per(20)
     @count = @user.following.count
     render 'show_follow'
   end
@@ -70,7 +69,7 @@ class UsersController < ApplicationController
   def followers
     @title = 'フォロワー'
     @user  = User.find(params[:id])
-    @users = @user.followers.paginate(page: params[:page])
+    @users = @user.followers.page(params[:page]).per(20)
     @count = @user.followers.count
     render 'show_follow'
   end

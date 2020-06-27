@@ -20,21 +20,19 @@ User.create!(name: 'Test User',
              admin: false,
              profile: '私はテストユーザーです。')
 
-# #book
-# Book.create!(title: "test-book",
-#   image: "/no-image.png")
-# Book.create!(title: "hogehoge-book",
-#   image: "/no-picture.png")
+#book
+Book.create!(title: "test-book",
+  image: "/no-image.png")
 
-# #micropost
-# users = User.order(:created_at).take(3)
-# 10.times do
-#   quoted_text = 'test-quoted_text'
-#   content_post = 'testpost'
-#   users.each { |user| user.microposts.create!(quoted_text: quoted_text,
-#                                               content: content_post,
-#                                               book_id: 1) }
-# end
+#micropost
+users = User.order(:created_at).take(2)
+30.times do
+  quoted_text = 'test-quoted_text'
+  content_post = 'testpost'
+  users.each { |user| user.microposts.create!(quoted_text: quoted_text,
+                                              content: content_post,
+                                              book_id: 1) }
+end
 
 # #board
 # title = 'board-title'
