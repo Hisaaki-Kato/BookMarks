@@ -15,7 +15,7 @@ gem 'httparty'
 gem 'jquery-rails'
 gem 'json'
 gem 'websocket-extensions', '>= 0.1.5'
-gem 'kaminari', '~> 0.17.0'
+gem 'kaminari'
 
 gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
