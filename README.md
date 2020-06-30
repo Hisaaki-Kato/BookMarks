@@ -1,39 +1,39 @@
 # BookMarks
-このアプリケーションは、Ruby/Ruby on railsによって作成された良書との出会いを促進する書籍特化型SNSサービスです。
+This application is a book-specific SNS service that promotes encounters with good books created by Ruby/Ruby on rails.
 [https://www.book-marks-app.net/]
 ![demo](https://raw.github.com/wiki/Hisaaki-Kato/BookMarks/images/screenshot.png)
 
-## 機能・使用技術一覧
+## Features and technical topics
 
-* 認証/認可
+* Authentication/Authorization
 
-* マイクロポストの投稿、いいね、コメント
+* For microposts, post, comment, like
 
-* ページネーション (kaminari)
+* Pagination (kaminari)
 
-* 学びボード(書籍の要約)の投稿
+* Create "学びボード" (book summary)
 
-* ユーザーのフォロー
+* Follow users
 
-* Feedの表示
+* Display user's feed
 
-* 書籍検索、登録 (GoogleBooksAPI)
+* Search and register books (GoogleBooksAPI)
 
-* 人気書籍の表示
+* Display popular books
 
-* 画像アップロード (Carrierwave)
+* Upload images (CarrierWave)
 
-* 管理ユーザーログイン
+* Login as admin user
 
-* テストユーザーログイン
+* Login as test user
 
-* テスト (RSpec/FactoryBot/Capybara)
+* Tests (RSpec/FactoryBot/Capybara)
 
-* インフラ (AWS: VPC/EC2/ELB)
+* Infrastructure (AWS: VPC/EC2/ELB)
 
-* データベース (AWS-RDB (MySQL))
+* Database (AWS-RDB (MySQL))
 
-* コードの静的解析 (RuboCop)
+* Linting codes (RuboCop)
 
 ## Requirement
 
@@ -47,13 +47,13 @@
 
 ## Usage
 
-1. リポジトリをcloneし、アプリケーションディレクトリに移動してください。
+1. Clone this repository, and move to application directory.
 ```bash
 $ git clone git@github.com:Hisaaki-Kato/BookMarks.git
 $ cd BookMarks/
 ```
 
-2. 下記のコマンドを実行し、サーバが起動することを確認してください。
+2. Excute db migration and runserver.
 ```bash
 $ rails db:create
 $ rails db:migrate
