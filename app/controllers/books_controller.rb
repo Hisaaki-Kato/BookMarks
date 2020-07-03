@@ -40,17 +40,12 @@ class BooksController < ApplicationController
       end
     else
       # 本を選択後の処理
+      @title = params[:title]
       @image = params[:image]
-      if @image.nil?
-        # 画像はない場合があるため、置き換え
-        @image = '/no-image.png'
-      end
-
-      @book = Book.find_by(title: params[:title], image: @image)
+      @book = Book.find_by(title: @title, image: @image)
       if @book.nil?
         # 本がDBに存在しない場合
         @book = Book.new
-        @title = params[:title]
       else
         # 本がDBに既に存在する場合
         redirect_to @book
@@ -61,8 +56,8 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     if @book.save
-      @read = Read.new(user_id: current_user.id, book_id: @book.id)
-      @read.save
+      #current_userの本棚にも追加する
+      Read.create(user_id: current_user.id, book_id: @book.id)
       flash[:success] = '本棚に追加しました。'
       redirect_to @book
     else
@@ -74,7 +69,7 @@ class BooksController < ApplicationController
   def destroy
     book = Book.find(params[:id])
     book.destroy
-    flash[:success] = '本棚から削除しました。'
+    flash[:success] = '本を削除しました。'
     redirect_to root_path
   end
 

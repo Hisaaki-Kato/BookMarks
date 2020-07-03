@@ -14,7 +14,11 @@ module GoogleBooksApi
       count.times do |x|
         results[x][0] = response.dig('items', x, 'volumeInfo', 'title')
         results[x][1] = response.dig('items', x, 'volumeInfo', 'imageLinks', 'thumbnail')
-        results[x][1] = results[x][1].gsub!('http', 'https') if !results[x][1].nil?
+        if results[x][1].nil?
+          results[x][1] = '/no-image.png'
+        else
+          results[x][1] = results[x][1].gsub!('http', 'https')
+        end
         results[x][2] = response.dig('items', x, 'volumeInfo', 'authors')
         results[x][2] = results[x][2].join(',') if results[x][2] # 複数著者をカンマで区切る
       end

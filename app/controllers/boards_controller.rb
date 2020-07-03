@@ -20,7 +20,6 @@ class BoardsController < ApplicationController
   end
 
   def update
-    @user = current_user
     @board = Board.find(params[:id])
     if @board.update_attributes(board_params)
       flash[:success] = '学びボードが更新されました。'
