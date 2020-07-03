@@ -61,6 +61,8 @@ $light-green: #ade597;
   margin: 30px;
 }
 
+
+/* current-userページ */
 .mypage-nav-tab {
   font-size: 20px;
   text-align: center;
@@ -85,6 +87,15 @@ $light-green: #ade597;
   padding: 50px;
   border: 1px solid $light-green;
   border-radius: 30px;
+
+  .mypage-new-book-link {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 3px 1px #007bff inset!important;
+    color: #007bff;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+  }
 }
 
 #profile {
@@ -109,13 +120,6 @@ $light-green: #ade597;
 }
 
 #books {
-  #mypage-new-book-link {
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 0 3px 1px #007bff inset!important;
-    color: #007bff;
-    padding: 5px 10px;
-  }
   .container {
     margin-top: 30px;
   }
