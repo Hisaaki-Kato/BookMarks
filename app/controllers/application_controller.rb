@@ -13,4 +13,15 @@ class ApplicationController < ActionController::Base
       redirect_to login_url
     end
   end
+
+  def test_user
+    if current_user.name == 'Test User'
+      redirect_to(root_url) 
+      flash[:danger] = 'テストユーザーではユーザー情報の編集はできません。'
+    end
+  end
+
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
+  end
 end
