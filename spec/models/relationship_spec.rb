@@ -21,14 +21,14 @@ RSpec.describe Relationship, type: :model do
   it 'is invalid without a follower_id' do
     relationship = Relationship.new(follower_id: nil)
     relationship.valid?
-    expect(relationship.errors[:follower_id]).to include("can't be blank")
+    expect(relationship.errors[:follower_id]).to include("を入力してください")
   end
 
   # followed-IDが無ければ無効な状態であること
   it 'is invalid without a follower_id' do
     relationship = Relationship.new(followed_id: nil)
     relationship.valid?
-    expect(relationship.errors[:followed_id]).to include("can't be blank")
+    expect(relationship.errors[:followed_id]).to include("を入力してください")
   end
 
   # follower-IDとfollowed-IDが同一でないこと
@@ -38,6 +38,6 @@ RSpec.describe Relationship, type: :model do
       followed_id: @user1.id
     )
     relationship.valid?
-    expect(relationship.errors[:follower_id]).to include('should be different')
+    expect(relationship.errors[:follower_id]).to include("自分自身をフォローすることはできません")
   end
 end

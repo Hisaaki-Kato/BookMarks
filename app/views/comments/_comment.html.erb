@@ -6,15 +6,15 @@
   </span>
   <span class="content"><%= comment.content %></span>
   <span class="timestamp">
-    Posted <%= time_ago_in_words(comment.created_at) %> ago.
+    <%= time_ago_in_words(comment.created_at) %>前に投稿されました。
   </span>
   <% if logged_in? %>
     <% if current_user?(comment.user) %>
       <%= link_to "delete", 
-                  micropost_comments_path(micropost_id: @micropost.id,
+                  micropost_comments_path(micropost_id: micropost.id,
                                           comment_id: comment.id),
                   method: :delete,
-                  data: { confirm: "You sure?" } %>
+                  data: { confirm: "削除しますか？" } %>
     <% end %>
   <% end %>
 </li>

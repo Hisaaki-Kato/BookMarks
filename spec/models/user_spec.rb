@@ -17,42 +17,42 @@ RSpec.describe User, type: :model do
   it 'is invalid without a name' do
     user = build(:user, name: nil)
     user.valid?
-    expect(user.errors[:name]).to include("can't be blank")
+    expect(user.errors[:name]).to include("を入力してください")
   end
 
   # 名前が50文字以上だと無効な状態であること
   it 'is invalid with a name longer than 50 characters' do
     user = build(:user, name: 'a' * 51)
     user.valid?
-    expect(user.errors[:name]).to include('is too long (maximum is 50 characters)')
+    expect(user.errors[:name]).to include("は50文字以内で入力してください")
   end
 
   # メールアドレスが無ければ無効な状態であること
   it 'is invalid without a email' do
     user = build(:user, email: nil)
     user.valid?
-    expect(user.errors[:email]).to include("can't be blank")
+    expect(user.errors[:email]).to include("を入力してください")
   end
 
   # メールアドレスが255文字以上だと無効な状態であること
   it 'is invalid with a email longer than 255 characters' do
     user = build(:user, email: ('a' * 256) + '@example.com')
     user.valid?
-    expect(user.errors[:email]).to include('is too long (maximum is 255 characters)')
+    expect(user.errors[:email]).to include("は255文字以内で入力してください")
   end
 
   # パスワードが無ければ無効な状態であること
   it 'is invalid without a password' do
     user = build(:user, password: nil)
     user.valid?
-    expect(user.errors[:password]).to include("can't be blank")
+    expect(user.errors[:password]).to include("を入力してください")
   end
 
   # パスワードが6文字以下だと無効な状態であること
   it 'is invalid with a password less than 6 characters' do
     user = build(:user, password: ('a' * 5))
     user.valid?
-    expect(user.errors[:password]).to include('is too short (minimum is 6 characters)')
+    expect(user.errors[:password]).to include("は6文字以上で入力してください")
   end
 
   # 重複したメールアドレスなら無効な状態であること
@@ -61,6 +61,6 @@ RSpec.describe User, type: :model do
                      name: 'Kato',
                      password: 'foobar')
     new_user.valid?
-    expect(new_user.errors[:email]).to include('has already been taken')
+    expect(new_user.errors[:email]).to include("はすでに存在します")
   end
 end

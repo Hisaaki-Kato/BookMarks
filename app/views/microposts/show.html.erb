@@ -19,7 +19,7 @@
       <% end %>
       <ul class="comments">
         <p class="comments-list">コメント一覧</p>
-        <%= render @comments %>
+        <%= render @comments, micropost: @micropost %>
       </ul>
     </div>
     <div class="col-md-4" id="liked-users">

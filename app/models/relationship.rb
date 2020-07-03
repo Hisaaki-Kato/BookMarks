@@ -11,6 +11,6 @@ class Relationship < ApplicationRecord
 
   # followerとfollowedが同一でないこと
   def not_be_the_same
-    errors.add(:follower_id, 'should be different') if follower_id == followed_id
+    errors.add(:follower_id, '自分自身をフォローすることはできません') if follower_id == followed_id
   end
 end
