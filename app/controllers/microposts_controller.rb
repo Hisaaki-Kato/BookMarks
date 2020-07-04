@@ -6,7 +6,7 @@ class MicropostsController < ApplicationController
 
   def index
     @microposts = Micropost.includes(:user).page(params[:page]).per(20)
-    @popular_books = popular_books
+    @popular_books = Book.popular
   end
 
   def show
@@ -42,15 +42,5 @@ class MicropostsController < ApplicationController
   def correct_user
     @micropost = current_user.microposts.find_by(id: params[:id])
     redirect_to root_url if @micropost.nil?
-  end
-
-  def popular_books
-    popular_books = []
-    # readsが多い順に、3つ取り出す
-    sorted_book_keys = Book.joins(:reads).group(:id).count.sort_by { |_, v| v }.reverse.to_h.keys
-    sorted_book_keys[0..2].each do |key|
-      popular_books.push(Book.find(key))
-    end
-    popular_books
   end
 end

@@ -13,4 +13,16 @@ class Book < ApplicationRecord
   def read_by?(user)
     reads.where(user_id: user.id).exists?
   end
+
+  scope :popular_book_id, -> {
+    joins(:reads).group(:id).count.sort_by { |_, v| v }.reverse.to_h.keys
+  }
+
+  def self.popular(num=2)
+    popular_books = []
+    self.popular_book_id[0..num].each do |id|
+      popular_books << self.find(id)
+    end
+    return popular_books
+  end
 end
