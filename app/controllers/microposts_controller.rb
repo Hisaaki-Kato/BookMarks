@@ -19,12 +19,8 @@ class MicropostsController < ApplicationController
     @user = current_user
     @book = Book.find(micropost_params[:book_id])
     @micropost = current_user.microposts.build(micropost_params)
-    if @micropost.save
-      redirect_to @book
-    else
-      flash[:danger] = '正しい内容を入力してください'
-      redirect_to @book
-    end
+    flash[:danger] = '正しい内容を入力してください' unless @micropost.save
+    redirect_to @book
   end
 
   def destroy

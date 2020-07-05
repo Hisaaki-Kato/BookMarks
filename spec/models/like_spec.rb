@@ -24,14 +24,14 @@ RSpec.describe Like, type: :model do
   it 'is invalid without a user_id' do
     like = Like.new(user_id: nil)
     like.valid?
-    expect(like.errors[:user_id]).to include("を入力してください")
+    expect(like.errors[:user_id]).to include('を入力してください')
   end
 
   # マイクロポストIDが無ければ無効な状態であること
   it 'is invalid without a micropost_id' do
     like = Like.new(micropost_id: nil)
     like.valid?
-    expect(like.errors[:micropost_id]).to include("を入力してください")
+    expect(like.errors[:micropost_id]).to include('を入力してください')
   end
 
   # 重複したユーザーID、マイクロポストIDのペアは許可しないこと
@@ -45,6 +45,6 @@ RSpec.describe Like, type: :model do
       micropost_id: @micropost.id
     )
     new_like.valid?
-    expect(new_like.errors[:micropost_id]).to include("はすでに存在します")
+    expect(new_like.errors[:micropost_id]).to include('はすでに存在します')
   end
 end

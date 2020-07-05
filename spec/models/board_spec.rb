@@ -17,28 +17,28 @@ RSpec.describe Board, type: :model do
   it 'is invalid without a title' do
     board = build(:board, title: nil)
     board.valid?
-    expect(board.errors[:title]).to include("を入力してください")
+    expect(board.errors[:title]).to include('を入力してください')
   end
 
   # ユーザーIDが無ければ無効な状態であること
   it 'is invalid without a user_id' do
     board = build(:board, user_id: nil)
     board.valid?
-    expect(board.errors[:user_id]).to include("を入力してください")
+    expect(board.errors[:user_id]).to include('を入力してください')
   end
 
   # book-IDが無ければ無効な状態であること
   it 'is invalid without a book_id' do
     board = build(:board, book_id: nil)
     board.valid?
-    expect(board.errors[:book_id]).to include("を入力してください")
+    expect(board.errors[:book_id]).to include('を入力してください')
   end
 
   # 内容が無ければ無効な状態であること
   it 'is invalid without a content' do
     board = build(:board, content: nil)
     board.valid?
-    expect(board.errors[:content]).to include("を入力してください")
+    expect(board.errors[:content]).to include('を入力してください')
   end
 
   # 内容が400文字以上だと無効な状態であること

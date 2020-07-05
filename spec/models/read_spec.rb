@@ -22,14 +22,14 @@ RSpec.describe Read, type: :model do
   it 'is invalid without a user_id' do
     read = Read.new(user_id: nil)
     read.valid?
-    expect(read.errors[:user_id]).to include("を入力してください")
+    expect(read.errors[:user_id]).to include('を入力してください')
   end
 
   # book-IDが無ければ無効な状態であること
   it 'is invalid without a micropost_id' do
     read = Read.new(book_id: nil)
     read.valid?
-    expect(read.errors[:book_id]).to include("を入力してください")
+    expect(read.errors[:book_id]).to include('を入力してください')
   end
 
   # 重複したユーザーID、book-IDのペアは許可しないこと
@@ -39,6 +39,6 @@ RSpec.describe Read, type: :model do
       book_id: @book.id
     )
     new_read.valid?
-    expect(new_read.errors[:book_id]).to include("はすでに存在します")
+    expect(new_read.errors[:book_id]).to include('はすでに存在します')
   end
 end

@@ -13,7 +13,7 @@ RSpec.describe Book, type: :model do
   it 'is invalid without a title' do
     book = build(:book, title: nil)
     book.valid?
-    expect(book.errors[:title]).to include("を入力してください")
+    expect(book.errors[:title]).to include('を入力してください')
   end
 
   # 重複したタイトル、画像のペアは許可しないこと
