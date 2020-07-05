@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 
   def test_user
     if current_user.name == 'Test User'
-      redirect_to(root_url) 
+      redirect_to(root_url)
       flash[:danger] = 'テストユーザーではユーザー情報の編集はできません。'
     end
   end

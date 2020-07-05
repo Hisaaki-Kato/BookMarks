@@ -56,7 +56,7 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     if @book.save
-      #current_userの本棚にも追加する
+      # current_userの本棚にも追加する
       Read.create(user_id: current_user.id, book_id: @book.id)
       flash[:success] = '本棚に追加しました。'
       redirect_to @book

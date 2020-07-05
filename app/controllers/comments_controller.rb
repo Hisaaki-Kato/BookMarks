@@ -7,12 +7,8 @@ class CommentsController < ApplicationController
   def create
     @micropost = Micropost.find(params[:micropost_id])
     @comment = @micropost.comments.build(comment_params)
-    if @comment.save
-      redirect_to @micropost
-    else
-      flash[:danger] = 'コメントを投稿できませんでした。'
-      redirect_to @micropost
-    end
+    flash[:danger] = 'コメントを投稿できませんでした。' unless @comment.save
+    redirect_to @micropost
   end
 
   def destroy

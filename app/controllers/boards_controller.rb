@@ -7,12 +7,8 @@ class BoardsController < ApplicationController
   def create
     @book = Book.find(board_params[:book_id])
     @board = current_user.boards.build(board_params)
-    if @board.save
-      redirect_to @book
-    else
-      flash[:danger] = '正しい内容を入力してください'
-      redirect_to @book
-    end
+    flash[:danger] = '正しい内容を入力してください' unless @board.save
+    redirect_to @book
   end
 
   def edit
