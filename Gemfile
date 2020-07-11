@@ -26,11 +26,12 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'turbolinks', '~> 5'
 
+gem 'mysql2'
+
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'rspec-rails', '~> 3.6.0'
-  gem 'sqlite3'
 end
 
 group :development do
@@ -53,10 +54,6 @@ group :test do
   gem 'minitest-reporters', '1.1.14'
   gem 'rails-controller-testing', '1.0.2'
   gem 'webdrivers'
-end
-
-group :production do
-  gem 'mysql2'
 end
 
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
