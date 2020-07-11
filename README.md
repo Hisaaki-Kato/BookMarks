@@ -35,6 +35,8 @@ This application is a book-specific SNS service that promotes encounters with go
 
 * Linting codes (RuboCop)
 
+* Docker
+
 ## Requirement
 
 * rbenv 1.1.2
@@ -43,7 +45,7 @@ This application is a book-specific SNS service that promotes encounters with go
 
 * Ruby on Rails 5.2.4.3
 
-* MySQL 14.14
+* MySQL 5.7
 
 ## Usage
 
