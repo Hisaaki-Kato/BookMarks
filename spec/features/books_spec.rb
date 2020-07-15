@@ -59,7 +59,7 @@ RSpec.feature 'Books', type: :feature do
         scenario 'user registers the original book to the shelf' do
           expect do
             within 'div.books-new-form' do
-              fill_in 'keyword', with: '----------------------------------------'
+              fill_in 'keyword', with: 'fafajeiofavkmdfaknrgpoaejrfdlk;acmaoerifja;oeifjamefkiaiojfam;oeirfjoie'
               click_button '検索'
             end
             expect(page).to have_content '書籍が見つかりません!'
