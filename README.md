@@ -37,7 +37,7 @@ This application is a book-specific SNS service that promotes encounters with go
 
 * Docker
 
-* CI/CID (CircleCI)
+* CI/CD (CircleCI)
 
 ## Requirement
 
