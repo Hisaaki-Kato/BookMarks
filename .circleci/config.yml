@@ -2,9 +2,8 @@ version: 2
 jobs:
   build:
     docker:
-    - image: circleci/ruby:2.7.1-node-browsers
+    - image: circleci/ruby:2.7.1-node
       environment:
-        - BUNDLER_VERSION: 2.1.4
         - RAILS_ENV: 'test'
     - image: circleci/mysql:5.7
       environment:
@@ -22,11 +21,10 @@ jobs:
         - v1-dependencies-{{ checksum "Gemfile.lock" }}
         - v1-dependencies-
 
-    - run:
-        name: install dependencies
-        command: |
-          gem install bundler -v 2.1.4
-          bundle install --jobs=4 --retry=3 --path vendor/bundle
+    # - run:
+    #     name: install dependencies
+    #     command: |
+    #       bundle install --jobs=4 --retry=3 --path vendor/bundle
 
     - save_cache:
         paths:
@@ -40,8 +38,8 @@ jobs:
     - run:
         name: Databasesetup
         command: |
-          bundle exec rails db:create
-          bundle exec rails db:migrate
+          bundle exec rake db:create
+          bundle exec rake db:migrate
 
     # run tests!
     - run:
