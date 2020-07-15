@@ -24,8 +24,7 @@ jobs:
     - run:
         name: install dependencies
         command: |
-          gem install bundler -v 2.1.4
-          bundle install --jobs=4 --retry=3 --path vendor/bundle
+          bundle install --jobs=4 --retry=3
 
     - save_cache:
         paths:
@@ -52,7 +51,6 @@ jobs:
 
           bundle exec rspec \
             --format progress \
-            --format RspecJunitFormatter \
             --out /tmp/test-results/rspec.xml \
             --format progress \
             $TEST_FILES
