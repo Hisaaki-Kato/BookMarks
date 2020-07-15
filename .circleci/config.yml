@@ -2,9 +2,8 @@ version: 2
 jobs:
   build:
     docker:
-    - image: circleci/ruby:2.7.1-node-browsers
+    - image: circleci/ruby:2.7.1-node
       environment:
-        - BUNDLER_VERSION: 2.1.4
         - RAILS_ENV: 'test'
     - image: circleci/mysql:5.7
       environment:
@@ -25,8 +24,7 @@ jobs:
     - run:
         name: install dependencies
         command: |
-          gem install bundler -v 2.1.4
-          bundle install --jobs=4 --retry=3 --path vendor/bundle
+          bundle install --jobs=4 --retry=3
 
     - save_cache:
         paths:
@@ -40,8 +38,8 @@ jobs:
     - run:
         name: Databasesetup
         command: |
-           bundle exec rake db:create
-           bundle exec rake db:schema:load
+          bundle exec rake db:create
+          bundle exec rake db:schema:load --trace
 
     # run tests!
     - run:
@@ -53,7 +51,6 @@ jobs:
 
           bundle exec rspec \
             --format progress \
-            --format RspecJunitFormatter \
             --out /tmp/test-results/rspec.xml \
             --format progress \
             $TEST_FILES
