@@ -40,8 +40,8 @@ jobs:
     - run:
         name: Databasesetup
         command: |
-          bundle exec bin/rails db:create
-          bundle exec bin/rails db:migrate
+          bundle exec rails db:create
+          bundle exec rails db:migrate
 
     # run tests!
     - run:
