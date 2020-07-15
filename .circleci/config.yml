@@ -40,8 +40,8 @@ jobs:
     - run:
         name: Databasesetup
         command: |
-          sudo bin/rails db:create
-          sudo bin/rails db:schema:load --trace
+          bundle exec bin/rails db:create
+          bundle exec bin/rails db:migrate
 
     # run tests!
     - run:
