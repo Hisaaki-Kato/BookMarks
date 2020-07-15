@@ -37,6 +37,8 @@ This application is a book-specific SNS service that promotes encounters with go
 
 * Docker
 
+* CI/CID (CircleCI)
+
 ## Requirement
 
 * rbenv 1.1.2
