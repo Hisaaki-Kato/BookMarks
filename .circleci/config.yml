@@ -2,7 +2,7 @@ version: 2.1
 orbs:
   aws-ecr: circleci/aws-ecr@6.7.0
   aws-ecs: circleci/aws-ecs@1.1.0
-jobs:
+# jobs:
   # build:
   #   docker:
   #   - image: circleci/ruby:2.7.1-node
@@ -64,47 +64,49 @@ jobs:
   #   - store_artifacts:
   #       path: /tmp/test-results
   #       destination: test-results
-  
+workflows:
   nginx-deploy:
-    # requires:
-    #   - build
-    - aws-ecr/build-and-push-image:
-        account-url: AWS_ECR_ACCOUNT_URL
-        region: AWS_REGION
-        aws-access-key-id: AWS_ACCESS_KEY_ID
-        aws-secret-access-key: AWS_SECRET_ACCESS_KEY
-        dockerfile: ./docker/nginx/Dockerfile
-        repo: nginx
-        tag: "${CIRCLE_SHA1}"
-        filters:
-          branches:
-            only: production
-    - aws-ecs/deploy-service-update:
-        requires:
-          - aws-ecr/build-and-push-image
-        family: 'ecs-bookmarks-task' # ECSのタスク定義名
-        cluster-name: 'arn:aws:ecs:ap-northeast-1:915015241325:cluster/ecs-bookmarks-cluster'  #ECSのクラスターのARN
-        service-name: 'ecs-bookmarks-service'  #サービス名
-        container-image-name-updates: "container=nginx,tag=${CIRCLE_SHA1}"
+    jobs:
+      # requires:
+      #   - build
+      - aws-ecr/build-and-push-image:
+          account-url: AWS_ECR_ACCOUNT_URL
+          region: AWS_REGION
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          dockerfile: ./docker/nginx/Dockerfile
+          repo: nginx
+          tag: "${CIRCLE_SHA1}"
+          filters:
+            branches:
+              only: production
+      - aws-ecs/deploy-service-update:
+          requires:
+            - aws-ecr/build-and-push-image
+          family: 'ecs-bookmarks-task' # ECSのタスク定義名
+          cluster-name: 'arn:aws:ecs:ap-northeast-1:915015241325:cluster/ecs-bookmarks-cluster'  #ECSのクラスターのARN
+          service-name: 'ecs-bookmarks-service'  #サービス名
+          container-image-name-updates: "container=nginx,tag=${CIRCLE_SHA1}"
 
   rails-deploy:
-    # requires:
-    #   - build
-    - aws-ecr/build-and-push-image:
-        account-url: AWS_ECR_ACCOUNT_URL
-        region: AWS_REGION
-        aws-access-key-id: AWS_ACCESS_KEY_ID
-        aws-secret-access-key: AWS_SECRET_ACCESS_KEY
-        dockerfile: ./docker/rails/Dockerfile
-        repo: bookmarks-app
-        tag: "${CIRCLE_SHA1}"
-        filters:
-          branches:
-            only: production
-    - aws-ecs/deploy-service-update:
-        requires:
-          - aws-ecr/build-and-push-image
-        family: 'ecs-bookmarks-task' # ECSのタスク定義名
-        cluster-name: 'arn:aws:ecs:ap-northeast-1:915015241325:cluster/ecs-bookmarks-cluster'  #ECSのクラスターのARN
-        service-name: 'ecs-bookmarks-service'  #サービス名
-        container-image-name-updates: "container=bookmarks-app,tag=${CIRCLE_SHA1}"
+    jobs:
+      # requires:
+      #   - build
+      - aws-ecr/build-and-push-image:
+          account-url: AWS_ECR_ACCOUNT_URL
+          region: AWS_REGION
+          aws-access-key-id: AWS_ACCESS_KEY_ID
+          aws-secret-access-key: AWS_SECRET_ACCESS_KEY
+          dockerfile: ./docker/rails/Dockerfile
+          repo: bookmarks-app
+          tag: "${CIRCLE_SHA1}"
+          filters:
+            branches:
+              only: production
+      - aws-ecs/deploy-service-update:
+          requires:
+            - aws-ecr/build-and-push-image
+          family: 'ecs-bookmarks-task' # ECSのタスク定義名
+          cluster-name: 'arn:aws:ecs:ap-northeast-1:915015241325:cluster/ecs-bookmarks-cluster'  #ECSのクラスターのARN
+          service-name: 'ecs-bookmarks-service'  #サービス名
+          container-image-name-updates: "container=bookmarks-app,tag=${CIRCLE_SHA1}"
