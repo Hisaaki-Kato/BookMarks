@@ -6,7 +6,7 @@ orbs:
 workflows:
   build-test:
     jobs:
-      - build:
+      - build-and-test:
           docker:
           - image: circleci/ruby:2.7.1-node
             environment:
