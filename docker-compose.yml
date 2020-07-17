@@ -22,9 +22,10 @@ services:
     ports:
       - '3000:3000'
     volumes:
-      - .:/app
+      - .:/BookMarks
       - /var/tmp
-      - sockets:/app/tmp/sockets
+      - sockets:/BookMarks/tmp/sockets
+      - public-data:/BookMarks/public
     tty: true
     depends_on:
       - db
@@ -41,10 +42,12 @@ services:
     ports:
       - '80:80'
     volumes: 
-      - sockets:/app/tmp/sockets
+      - sockets:/BookMarks/tmp/sockets
+      - public-data:/BookMarks/public
     depends_on: 
       - app
 
 volumes:
   db_data:
   sockets:
+  public-data:
