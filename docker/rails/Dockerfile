@@ -18,7 +18,7 @@ RUN bundle install -j4
 
 ADD . /BookMarks
 
-RUN bundle exec rake assets:precompile RAILS_ENV="production" \
+RUN SECRET_KEY_BASE=placeholder bundle exec rake assets:precompile RAILS_ENV="production" \
     && yarn cache clean \
     && rm -rf node_modules tmp/cache
 
