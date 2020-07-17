@@ -4,8 +4,8 @@ orbs:
   aws-ecs: circleci/aws-ecs@1.1.0
 
 workflows:
-  jobs:
-    build:
+  build:
+    jobs:
       docker:
       - image: circleci/ruby:2.7.1-node
         environment:
