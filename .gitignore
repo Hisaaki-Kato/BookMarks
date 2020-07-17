@@ -7,10 +7,6 @@
 # Ignore bundler config.
 /.bundle
 
-# Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-journal
-
 # Ignore the seeds.rb.
 /db/seeds.rb
 
@@ -32,3 +28,6 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+awscli-bundle.zip
+/awscli-bundle/*
