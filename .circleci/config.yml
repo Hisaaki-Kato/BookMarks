@@ -67,8 +67,8 @@ orbs:
 workflows:
   nginx-deploy:
     jobs:
-      requires:
-        - rails_deploy
+      # requires:
+      #   - rails_deploy
       - aws-ecr/build-and-push-image:
           account-url: AWS_ECR_ACCOUNT_URL
           region: AWS_REGION
