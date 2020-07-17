@@ -67,7 +67,8 @@ jobs:
         destination: test-results
 
 workflows:
-  build:
+  jobs:
+    - build
 
   nginx-deploy:
     jobs:
