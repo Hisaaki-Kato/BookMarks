@@ -35,6 +35,19 @@ services:
       MYSQL_PASSWORD: password
       TZ: "Asia/Tokyo"
 
+  api:
+    build:
+      context: .
+      dockerfile: ./docker/api/Dockerfile
+    command: flask run --host 0.0.0.0 --port 5000
+    volumes:
+      - ./docker/api:/flask
+      - /var/tmp
+    depends_on:
+      - app
+    environment:
+      TZ: "Asia/Tokyo"
+
   nginx:
     build:
       context: .
