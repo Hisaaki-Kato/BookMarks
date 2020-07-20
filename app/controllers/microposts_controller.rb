@@ -16,16 +16,11 @@ class MicropostsController < ApplicationController
     @microposts = Micropost.includes(:user).page(params[:page]).per(20)
     @popular_books = Book.popular
 
-    ###
-    documents = {'documents' => [
-      'Pythonは強力で、学びやすいプログラミング言語です。',
-      '効率的な高レベルデータ構造と、シンプルで効果的なオブジェクト指向プログラミング機構を備えています。',
-      'Pythonは、洗練された文法・動的なデータ型付け・インタープリタであることなどから、スクリプティングや高速アプリケーション開発(Rapid Application Development: RAD)に理想的なプログラミング言語となっています。',
-      'Python (https://www.python.org) は、Pythonインタープリタと標準ライブラリのソースコードと、主要プラットフォームごとにコンパイル済みのバイナリファイルを無料で配布しています。',
-      'また、Pythonには、無料のサードパーティモジュールやプログラム、ツール、ドキュメントなども紹介しています。'
-    ]}
-    response = RecommendBooksApi.post_request(documents)
-    @words = response['important_words']
+    if logged_in?
+      quoted_texts = Micropost.quoted_texts(current_user)
+      @important_words = RecommendBooksApi.extract_important_words(quoted_texts)
+      @results = GoogleBooksApi.get_results(@important_words)
+    end
   end
 
   def show
