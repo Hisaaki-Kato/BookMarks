@@ -3,7 +3,7 @@
 module GoogleBooksApi
   module_function
 
-  def get_results(keyword, num=3)
+  def get_results(keyword, num=12)
     keyword = URI.encode_www_form_component(keyword)
     url = "https://www.googleapis.com/books/v1/volumes?q=#{keyword}&maxResults=#{num}"
     response = HTTParty.get(url)
