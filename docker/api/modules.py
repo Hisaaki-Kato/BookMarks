@@ -12,17 +12,23 @@ def extract_only_nouns(text):
     return words
 
 def extract_important_words(documents, number_of_extract):
+    if len(documents) == 1:
+        documents = [documents]
+
     words_list = sum(([extract_only_nouns(text) for text in documents]), [])
     _, word_index = np.unique(words_list, return_inverse=True)
     word_dictionary = dict(zip(word_index, words_list))
 
     number_of_words = len(word_index)
+    if number_of_words <= 3:
+        return word_list
+
     link_list = [word_index[i:i+2] for i in range(number_of_words-1)]
 
-    mat = np.zeros((number_of_words, number_of_words))
+    matrix = np.zeros((number_of_words, number_of_words))
     for link in link_list:
-        mat[link[0]][link[1]] += 1
-        mat[link[1]][link[0]] += 1
+        matrix[link[0]][link[1]] += 1
+        matrix[link[1]][link[0]] += 1
 
     rank = np.array([[m] for m in np.zeros(number_of_words)])
     rank[0] = 1

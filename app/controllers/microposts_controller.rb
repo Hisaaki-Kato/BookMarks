@@ -16,10 +16,10 @@ class MicropostsController < ApplicationController
     @microposts = Micropost.includes(:user).page(params[:page]).per(20)
     @popular_books = Book.popular
 
-    if logged_in?
+    if logged_in? && current_user.microposts.exists?
       quoted_texts = Micropost.quoted_texts(current_user)
-      @important_words = RecommendBooksApi.extract_important_words(quoted_texts)
-      @results = GoogleBooksApi.get_results(@important_words)
+      important_words = RecommendBooksApi.extract_important_words(quoted_texts)
+      @recommended_books = GoogleBooksApi.get_results(important_words, num=4)
     end
   end
 

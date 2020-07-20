@@ -11,9 +11,12 @@
     </aside>
 
     <div class="col-md-8">
+      <% if !@recommended_books.nil? %>
+        <h1>あなたにおすすめの書籍があります！</h1>
+        <%= render "books/result", books: @recommended_books %>
+      <% end %>
+
       <h1>最新の投稿</h1>
-      <%= @important_words %>
-      <%= @results %>
 
       <%= paginate @microposts %>
       <ul class="microposts">

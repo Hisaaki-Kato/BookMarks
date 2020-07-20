@@ -14,7 +14,7 @@
 
   <div class="container" id="books-new-container">
     <% if @books.present? %>
-      <%# 検索結果 %>
+      <h2>検索結果</h2>
       <%= render "books/result", books: @books %>
     <% elsif @keyword.present? %>
       <%# 検索結果が存在しない場合 %>
