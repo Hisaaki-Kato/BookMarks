@@ -1,12 +1,26 @@
 # frozen_string_literal: true
 
 class MicropostsController < ApplicationController
+  include GoogleBooksApi # app/lib
+  include RecommendBooksApi # app/lib
+
+  require 'net/http'
+  require 'uri'
+  require 'json'
+  require 'httparty'
+
   before_action :logged_in_user, only: %i[create destroy]
   before_action :correct_user,   only: :destroy
 
   def index
     @microposts = Micropost.includes(:user).page(params[:page]).per(20)
     @popular_books = Book.popular
+
+    if logged_in? && current_user.microposts.exists?
+      quoted_texts = Micropost.quoted_texts(current_user)
+      important_words = RecommendBooksApi.extract_important_words(quoted_texts)
+      @recommended_books = GoogleBooksApi.get_results(important_words, num=4)
+    end
   end
 
   def show

@@ -19,4 +19,13 @@ class Micropost < ApplicationRecord
   def commented_by?(user)
     comments.where(user_id: user.id).exists?
   end
+
+  def self.quoted_texts(user)
+    quoted_texts = []
+    microposts = self.where(user_id: user.id)
+    microposts.each do |micropost|
+      quoted_texts << micropost.quoted_text
+    end
+    quoted_texts
+  end
 end
