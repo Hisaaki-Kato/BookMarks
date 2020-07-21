@@ -12,9 +12,6 @@ def extract_only_nouns(text):
     return words
 
 def extract_important_words(documents, number_of_extract):
-    if len(documents) == 1:
-        documents = [documents]
-
     words_list = sum(([extract_only_nouns(text) for text in documents]), [])
     _, word_index = np.unique(words_list, return_inverse=True)
     word_dictionary = dict(zip(word_index, words_list))
@@ -33,7 +30,7 @@ def extract_important_words(documents, number_of_extract):
     rank = np.array([[m] for m in np.zeros(number_of_words)])
     rank[0] = 1
     for n in range(100):
-        rank = np.dot(mat, rank)
+        rank = np.dot(matrix, rank)
         rank = rank/rank.max()
 
     rank = rank.flatten()
