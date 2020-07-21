@@ -3,10 +3,8 @@
   <div class="row">
     <aside class="col-md-4">
       <section class="book_info">
-        <h1>
-          <%= @book.title %>
-        </h1>
         <p><img class="book-img" src="<%= @book.image %>"></p>
+        <h1><%= @book.title %></h1>
         <% if logged_in? %>
           <%= render "books/read_form", book: @book %>
           <% if current_user.admin? %>

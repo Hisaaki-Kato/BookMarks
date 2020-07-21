@@ -10,14 +10,26 @@ $gray-darker: #b6b6b6;
 $light-green: #ade597;
 $medium-green: #74ce50;
 
-.col-md-8 {
-  h1 {
+#microposts-index {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.col-md-5, .col-md-8 {
+  padding-left: 30px;
+  h1, h3 {
     text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    span {
+      background: linear-gradient(transparent 70%, $light-green 70%);
+    }
   }
   /* ページネーション */ 
   nav.pagination {
-    position: relative;
-    left: 36%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    justify-content: center;
     span {
       text-align: center;
       padding: 5px;

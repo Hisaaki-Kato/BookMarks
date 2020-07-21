@@ -18,7 +18,7 @@ class Book < ApplicationRecord
     joins(:reads).group(:id).count.sort_by { |_, v| v }.reverse.to_h.keys
   }
 
-  def self.popular(num = 2)
+  def self.popular(num = 3)
     popular_books = []
     popular_book_id[0..num].each do |id|
       popular_books << find(id)

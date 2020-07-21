@@ -1,0 +1,8 @@
+<% books.each do |book| %>
+  <div class="book">
+    <%= link_to new_book_path(title: book[0], image: book[1]) do %>
+      <p><img class="book-img" src="<%= book[1] %>"></p>
+      <p class="book-title"><%= book[0] %></p>
+    <% end %>
+  </div>
+<% end %>

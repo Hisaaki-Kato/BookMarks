@@ -23,11 +23,17 @@ $medium-green: rgb(44, 172, 71);
 }
 
 /* 人気の書籍 */
-.popular-books {
+aside hr {
+  margin-right: 20px;
+  border-top: 1px solid #ade597;
+}
+.popular-books, .recommended-books {
+  margin-top: 50px;
+  margin-bottom: 50px;
   margin-right: 20px;
   border: 20px;
   padding: 10px;
-  background-color: $gray-medium-light;
+  text-align: center;
   h1 {
     text-align: center;
     padding-top: 10px;
@@ -51,10 +57,24 @@ $medium-green: rgb(44, 172, 71);
     }
   }
   .book {
+    display: inline-block;
+    max-width: 150px;
     padding-bottom: 10px;
-    border-bottom: 1px solid $gray-lighter;
+    margin-bottom: 0;
+    vertical-align: top;
+    text-align: center;
     p {
-      margin-bottom: 4px;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      min-height: 72px;
+      display: flex;
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      img {
+        min-height: 215px;
+      }
     }
   }
 }
@@ -93,6 +113,16 @@ $medium-green: rgb(44, 172, 71);
 }
 
 /* showページ */ 
+.book_info {
+  text-align: center;
+  padding-right: 30px;
+  margin-top: 50px;
+  h1 {
+    margin: 30px 0;
+    text-align: center;
+  }
+}
+
 .bookpage-nav-tab {
   margin-top: 30px;
   text-align: center;
