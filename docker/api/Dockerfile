@@ -12,5 +12,6 @@ WORKDIR /flask
 
 ADD ./docker/api/requirements.txt .
 ADD ./docker/api/app.py .
+ADD ./docker/api/word_extracter.py .
 
 RUN pip install -r requirements.txt
