@@ -25,7 +25,7 @@ services:
       - .:/BookMarks
       - /var/tmp
       - sockets:/BookMarks/tmp/sockets
-      - public-data:/BookMarks/public
+      # - public-data:/BookMarks/public
     tty: true
     depends_on:
       - db
@@ -56,11 +56,11 @@ services:
       - '80:80'
     volumes: 
       - sockets:/BookMarks/tmp/sockets
-      - public-data:/BookMarks/public
+      - ./public:/BookMarks/public
     depends_on: 
       - app
 
 volumes:
   db_data:
   sockets:
-  public-data:
+  # public-data:

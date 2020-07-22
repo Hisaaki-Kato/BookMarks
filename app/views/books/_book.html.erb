@@ -1,6 +1,8 @@
 <div class="book">
   <%= link_to book do %>
-    <p><img class="book-img" src="<%= book.image %>"></p>
+    <div>
+      <img class="book-img" src="<%= book.image %>">
+    </div>
     <p class="book-title"><%= book.title %></p>
   <% end %>
 

@@ -1,0 +1,17 @@
+<div class="book">
+  <%= link_to book[0] do %>
+    <div>
+      <img class="book-img" src="<%= book[0].image %>">
+      <img class="ranking-batch" src="/batch-<%= book[1] %>.png">
+    </div>
+    <p class="book-title"><%= book[0].title %></p>
+  <% end %>
+
+  <% if logged_in? %>
+    <%= render "books/read_form", book: book[0] %>
+    <% if current_user.admin? %>
+      <%= link_to "delete", book[0], method: :delete,
+                                     data: { confirm: "You sure?" }%>
+    <% end %>
+  <% end %>
+</div>
