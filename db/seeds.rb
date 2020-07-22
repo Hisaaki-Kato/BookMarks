@@ -13,18 +13,18 @@ User.create!(name: 'Test User',
              admin: false,
              profile: '私はテストユーザーです。')
 
-# book
-Book.create!(title: 'test-book',
-             image: '/no-image.png')
+# # book
+# Book.create!(title: 'test-book',
+#              image: '/no-image.png')
 
-# micropost
-users = User.order(:created_at).take(2)
-30.times do
-  quoted_text = 'test-quoted_text'
-  content_post = 'testpost'
-  users.each do |user|
-    user.microposts.create!(quoted_text: quoted_text,
-                            content: content_post,
-                            book_id: 1)
-  end
-end
+# # micropost
+# users = User.order(:created_at).take(2)
+# 30.times do
+#   quoted_text = 'test-quoted_text'
+#   content_post = 'testpost'
+#   users.each do |user|
+#     user.microposts.create!(quoted_text: quoted_text,
+#                             content: content_post,
+#                             book_id: 1)
+#   end
+# end
