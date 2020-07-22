@@ -44,6 +44,22 @@ body {
   overflow-x: hidden;
 }
 
+.btn-secondary {
+  background-color: #fff;
+  color: #6c757d;
+}
+
+.btn-success {
+  background-color: #fff;
+  color: #28a745;
+  box-shadow: 3px 3px 3px 0 $light-green;
+  transition: all 0.3s;
+  &:hover {
+    box-shadow: None;
+    transform: translate(3px,3px);
+  }
+}
+
 body,
 #wrapper {
   display: flex;
@@ -137,7 +153,7 @@ header {
     right: 0;
     padding: 40px 30px;
     margin: 0;
-    width: 200px;
+    width: 300px;
     background-color: $white;
     border: 1px solid $gray-medium-light;
     -webkit-transition: all .2s ease;

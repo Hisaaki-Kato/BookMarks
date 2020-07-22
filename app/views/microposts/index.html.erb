@@ -1,22 +1,26 @@
 <% provide(:title, 'HOME') %>
 <%= render 'microposts/slider' %>
-<div class="container">
+<div id="microposts-index">
   <div class="row">
-    <aside class="col-md-4">
+    <aside class="col-md-7">
       <section class="popular-books">
         <h1><img id="ranking-logo" src="/ranking.png">人気の書籍ランキング</h1>
-        <%= render @popular_books %>
-        <p id="search-other-books"><%= link_to "他の本を探す", new_book_path %></p>
+        <% @popular_books.each do |book| %>
+          <%= render "books/popular", book: book %>
+        <% end %>
+        <p id="search-other-books"><%= link_to "他の本を探す >>", new_book_path %></p>
+      </section>
+      <hr>
+      <section class="recommended-books">
+        <% if !@recommended_books.nil? %>
+          <h1>あなたへのイチオシ書籍！</h1>
+          <%= render "books/recommend", books: @recommended_books %>
+        <% end %>
       </section>
     </aside>
 
-    <div class="col-md-8">
-      <% if !@recommended_books.nil? %>
-        <h1>あなたにおすすめの書籍があります！</h1>
-        <%= render "books/result", books: @recommended_books %>
-      <% end %>
-
-      <h1>最新の投稿</h1>
+    <div class="col-md-5">
+      <h1><span>最新の投稿</span></h1>
 
       <%= paginate @microposts %>
       <ul class="microposts">

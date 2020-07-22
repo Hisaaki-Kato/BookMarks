@@ -16,7 +16,7 @@ ADD Gemfile .
 ADD Gemfile.lock .
 RUN bundle install -j4
 
-ADD . /BookMarks
+COPY . /BookMarks
 
 RUN SECRET_KEY_BASE=placeholder bundle exec rake assets:precompile RAILS_ENV="production" \
     && yarn cache clean \

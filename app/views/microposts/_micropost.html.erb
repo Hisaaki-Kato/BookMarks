@@ -20,7 +20,6 @@
       <% if @book.blank? %>
         <%= link_to micropost.book do %>
           <img class="book-img in-microposts" src="<%= micropost.book.image %>">
-          <p><%= micropost.book.title %></p>
         <% end %>
       <% end %>
     </div>
