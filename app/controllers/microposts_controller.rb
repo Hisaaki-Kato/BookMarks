@@ -13,7 +13,7 @@ class MicropostsController < ApplicationController
   before_action :correct_user,   only: :destroy
 
   def index
-    @microposts = Micropost.includes(:user).page(params[:page]).per(20)
+    @microposts = Micropost.includes(:user).page(params[:page])
     @popular_books = Book.popular
 
     if logged_in? && current_user.microposts.exists?
