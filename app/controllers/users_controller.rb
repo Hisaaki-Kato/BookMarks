@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @microposts = @user.microposts.includes(:user).page(params[:page]).per(20)
+    @microposts = @user.microposts.includes(:user).page(params[:page])
     if logged_in?
       @read_books = @user.read_books
       @read_book = current_user.read_books.build
@@ -61,7 +61,7 @@ class UsersController < ApplicationController
   def following
     @title = 'フォローしているユーザー'
     @user  = User.find(params[:id])
-    @users = @user.following.page(params[:page]).per(20)
+    @users = @user.following.page(params[:page])
     @count = @user.following.count
     render 'show_follow'
   end
@@ -69,7 +69,7 @@ class UsersController < ApplicationController
   def followers
     @title = 'フォロワー'
     @user  = User.find(params[:id])
-    @users = @user.followers.page(params[:page]).per(20)
+    @users = @user.followers.page(params[:page])
     @count = @user.followers.count
     render 'show_follow'
   end
