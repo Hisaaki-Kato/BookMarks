@@ -1,6 +1,6 @@
 # BookMarks
 This application is a book-specific SNS service that promotes encounters with good books created by Ruby/Ruby on rails.
-[https://www.book-marks-app.net/]
+
 ![demo](https://raw.github.com/wiki/Hisaaki-Kato/BookMarks/images/screenshot.png)
 
 ## Features and technical topics
