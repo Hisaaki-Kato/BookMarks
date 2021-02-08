@@ -10,7 +10,7 @@ gem 'rails', '~> 5.2.4', '>= 5.2.4.3'
 
 gem 'bcrypt',                  '3.1.12'
 gem 'bootstrap',               '~> 4.3.1'
-gem 'carrierwave',             '1.2.2'
+gem 'carrierwave',             '1.3.2'
 gem 'httparty'
 gem 'jquery-rails'
 gem 'json'
